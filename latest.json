@@ -1,11 +1,11 @@
 {
-  "version": "0.1.3",
-  "notes": "- 使い方ガイド・紹介サイト・サンプルを今の画面に合わせる\r\n- Git のログと差分、並び順のフォルダごとの保存、OneDrive の一覧\r\n- 使い方ガイド（写真つき）とショートカットキーの一覧を追加",
-  "pub_date": "2026-11-14T11:10:02Z",
+  "version": "0.1.4",
+  "notes": "- ほかのアプリへのドラッグを対応",
+  "pub_date": "2026-11-14T12:13:43Z",
   "platforms": {
     "windows-x86_64": {
-      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTMUR6cnBJK200b2htUERaUjA1NzJyNTE1cHpmY253Q3VWSzFqRUg5cDk0S3lJcXlTb0RoZWhOQlZ6MVdkNnhUQncwR0lscjhLQ1daVnJSRXRGdFJEcDhCQlVQQzE5WXdjPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzk0NjU0NjAxCWZpbGU6U2hpb3JpXzAuMS4zX3g2NC1zZXR1cC5leGUJdmVyc2lvbjowLjEuMwoxV3ZYNXdob3EwMTlocVhOaFIxc1AzSlArOE85VWJQb3RTbWNlcG5ZdDJHU1N3Q1hwb2VPcnV0ZmNnV1NjRkczeHovT24vUFJ4TEZWZGdLMXlkSjVEUT09Cg==",
-      "url": "https://shiori-filer.github.io/ShioriOfficial/download/Shiori_0.1.3_x64-setup.exe"
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTMUR6cnBJK200b3EwNkRpanJPTlZzMmEvTjBGeWVmRVZacDg1YUtjeURNTlQ2VUhGdlFkblhlMUhnMHMwUGtqMnc0eGUrdFk3SGlJbW9oVUo3ZEsvdG1ZL29Ta2Q0SkFNPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzk0NjU4NDIzCWZpbGU6U2hpb3JpXzAuMS40X3g2NC1zZXR1cC5leGUJdmVyc2lvbjowLjEuNApoOU9BT2YvMlBOb1NEdGRSak1xYU50algvak5qT29FeEhxQjRxV2RWbE53Vkppd3pPVlV4by85N3dvWXVVYTFwazJqRHJzeVJSQTNodytyTnd0b01EUT09Cg==",
+      "url": "https://shiori-filer.github.io/ShioriOfficial/download/Shiori_0.1.4_x64-setup.exe"
     }
   }
 }
