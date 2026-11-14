@@ -10,9 +10,9 @@
 </p>
 
 <p align="center">
-  <a href="https://rio-jp.github.io/ShioriOfficial/"><b>公式サイト</b></a>
+  <a href="https://shiori-filer.github.io/ShioriOfficial/"><b>公式サイト</b></a>
   ・
-  <a href="https://rio-jp.github.io/ShioriOfficial/download/Shiori_0.1.0_x64-setup.exe"><b>ダウンロード（v0.1.0）</b></a>
+  <a href="https://shiori-filer.github.io/ShioriOfficial/download/Shiori_0.1.0_x64-setup.exe"><b>ダウンロード（v0.1.0）</b></a>
 </p>
 
 <p align="center">
@@ -36,7 +36,7 @@ Shiori は、ひとつの案件のフォルダを「ワークスペース」に�
 | **フォルダごとのテンプレート** | 「01_要件定義」「02_基本設計」…といった案件フォルダのひな形を、フォルダ構成ごとテンプレートにできます。 |
 
 ほかにも、ZIP・7z の中をそのまま開く、Ctrl+Z でごみ箱に入れた削除も元に戻す、OneDrive の同期状態の表示、WinMerge での比較、4 つの配色など。
-詳しくは[公式サイト](https://rio-jp.github.io/ShioriOfficial/)の動画をご覧ください。
+詳しくは[公式サイト](https://shiori-filer.github.io/ShioriOfficial/)の動画をご覧ください。
 
 <p>
   <img src="media/workspaces.jpg" width="49%" alt="ワークスペースを切り替える画面">
@@ -45,8 +45,9 @@ Shiori は、ひとつの案件のフォルダを「ワークスペース」に�
 
 ## インストール
 
-1. [Shiori_0.1.0_x64-setup.exe](https://rio-jp.github.io/ShioriOfficial/download/Shiori_0.1.0_x64-setup.exe) をダウンロードして実行します。
+1. [Shiori_0.1.0_x64-setup.exe](https://shiori-filer.github.io/ShioriOfficial/download/Shiori_0.1.0_x64-setup.exe) をダウンロードして実行します。
 2. 使用許諾契約に同意すると、インストールが始まります。管理者の権限は要りません（今のユーザーにだけインストールされます）。
+3. 新しいバージョンが出ると、起動したときに画面の上に知らせが出ます。「今すぐ更新」を押すと、そのまま更新して開き直します。
 
 > [!NOTE]
 > インストーラーにはまだデジタル署名をしていないため、初めて実行すると「Windows によって PC が保護されました」と表示されることがあります。
@@ -75,20 +76,20 @@ Windows の「設定」→「アプリ」→「インストールされている
 ## ライセンス
 
 Shiori は無料で使えます。個人・法人を問わず、業務にも使えます。会社の中でインストーラーを配ることもできます。
-ただし、インストーラーをインターネットなど組織の外へ再配布することと、改変・リバースエンジニアリングは禁止しています。紹介するときは、[公式サイト](https://rio-jp.github.io/ShioriOfficial/)へのリンクをお使いください。
+ただし、インストーラーをインターネットなど組織の外へ再配布することと、改変・リバースエンジニアリングは禁止しています。紹介するときは、[公式サイト](https://shiori-filer.github.io/ShioriOfficial/)へのリンクをお使いください。
 
-- 条件の全文: [LICENSE](LICENSE)（[利用規約](https://rio-jp.github.io/ShioriOfficial/terms.html)と同じ内容です）
+- 条件の全文: [LICENSE](LICENSE)（[利用規約](https://shiori-filer.github.io/ShioriOfficial/terms.html)と同じ内容です）
 - Shiori のソースコードは公開していません。
-- Shiori が使っているオープンソースソフトウェアのライセンスは、アプリの「設定 → このアプリ → オープンソースのライセンス」で確認できます。
+- Shiori が使っているオープンソースソフトウェアのライセンスは、アプリの「Shiori について」（サイドバーの下の ⓘ）で確認できます。
 
 ## プライバシー
 
-Shiori はインターネットに接続しません。利用状況の送信や更新の確認は行わず、設定もワークスペースも、すべてパソコンの中だけに保存します。
-詳しくは[プライバシーポリシー](https://rio-jp.github.io/ShioriOfficial/privacy.html)をご覧ください。
+Shiori がインターネットに接続するのは、新しいバージョンの確認と更新のときだけです（起動時の確認は「設定 → 更新」でオフにできます）。ファイルやフォルダ、ワークスペースの情報は送りません。設定もワークスペースも、すべてパソコンの中だけに保存します。
+詳しくは[プライバシーポリシー](https://shiori-filer.github.io/ShioriOfficial/privacy.html)をご覧ください。
 
 ## 不具合の報告・ご質問
 
-[Issues](https://github.com/Rio-jp/ShioriOfficial/issues) へお寄せください。Windows のバージョンと、どの操作で起きたかを書いていただけると助かります。
+[Issues](https://github.com/shiori-filer/ShioriOfficial/issues) へお寄せください。Windows のバージョンと、どの操作で起きたかを書いていただけると助かります。
 Issues は誰でも見られるため、個人情報や社内の情報（実際のフォルダ名・ファイル名など）は書かないでください。
 
 ## このリポジトリについて
@@ -103,4 +104,4 @@ Issues は誰でも見られるため、個人情報や社内の情報（実際�
 
 ---
 
-© 2026 Rio
+© 2026 Shiori

@@ -37,13 +37,18 @@
 
   <div class="doc-grid">
   <aside class="route" aria-label="目次" hidden></aside>
-  <p class="intro">Windows 用ファイラー「Shiori」（以下「本ソフトウェア」）は、利用者の情報を集めません。設定もフォルダの一覧も、すべて利用者のパソコンの中だけに保存されます。以下に、何がどこに保存され、何が外に出るのかを書いておきます。</p>
+  <p class="intro">Windows 用ファイラー「Shiori」（以下「本ソフトウェア」）は、利用者の情報を集めません。設定もフォルダの一覧も、すべて利用者のパソコンの中だけに保存されます。インターネットに接続するのは、新しいバージョンの確認のときだけです。以下に、何がどこに保存され、何が外に出るのかを書いておきます。</p>
 
   <ol class="articles">
     <li id="a1">
       <span class="no" aria-hidden="true"><small>PP</small><b>01</b></span>
-      <h2>本ソフトウェアは通信しません</h2>
-      <p>本ソフトウェアがインターネットに接続することはありません。利用状況の送信、更新の確認、広告の表示は行いません。プレビューで Markdown を表示するときも、外部の画像は読み込みません。</p>
+      <h2>インターネットに接続するのは、更新の確認だけです</h2>
+      <p>本ソフトウェアがインターネットに接続するのは、新しいバージョンの確認と、その更新のときだけです。</p>
+      <ul>
+        <li><strong>確認:</strong> 起動したときと、「Shiori について」で確認したときに、公式サイトにあるバージョンの情報（<code>latest.json</code>）を読みます。起動時の確認は「設定 → 更新」でオフにできます。</li>
+        <li><strong>更新:</strong> 利用者が「今すぐ更新」を選んだときだけ、公式サイトからインストーラーをダウンロードします。</li>
+      </ul>
+      <p>このとき送られるのは、ウェブサイトを見るときと同じ通信の情報（IP アドレスなど）だけです。ファイルやフォルダ、ワークスペース、設定の内容は送りません。利用状況の送信や広告の表示は行いません。プレビューで Markdown を表示するときも、外部の画像は読み込みません。</p>
     </li>
     <li id="a2">
       <span class="no" aria-hidden="true"><small>PP</small><b>02</b></span>
@@ -72,7 +77,7 @@
       <h2>紹介サイトについて</h2>
       <p>このサイトは Cookie を使わず、アクセス解析も入れていません。ただし、表示のために次のサービスを使っており、閲覧すると IP アドレスやブラウザの種類などがそれぞれの事業者に送られます。</p>
       <ul>
-        <li>GitHub Pages（サイトの配信）と GitHub Releases（インストーラーの配布）: <a href="https://docs.github.com/ja/site-policy/privacy-policies/github-general-privacy-statement">GitHub のプライバシーに関する声明</a></li>
+        <li>GitHub Pages（このサイト、インストーラー、本ソフトウェアが読むバージョンの情報の配信）: <a href="https://docs.github.com/ja/site-policy/privacy-policies/github-general-privacy-statement">GitHub のプライバシーに関する声明</a></li>
         <li>Google Fonts（文字の表示）: <a href="https://policies.google.com/privacy?hl=ja">Google のプライバシーポリシー</a></li>
       </ul>
     </li>
@@ -90,7 +95,7 @@
 
   <div class="contact">
     <h2>お問い合わせ</h2>
-    <p>このポリシーについてのご質問は <a href="https://github.com/Rio-jp/ShioriOfficial/issues">GitHub の Issues</a> へお寄せください。Issues は誰でも見られるため、個人情報や社内の情報は書かないでください。</p>
+    <p>このポリシーについてのご質問は <a href="https://github.com/shiori-filer/ShioriOfficial/issues">GitHub の Issues</a> へお寄せください。Issues は誰でも見られるため、個人情報や社内の情報は書かないでください。</p>
   </div>
   </div>
 </main>
@@ -101,7 +106,7 @@
   <span class="f-links">
     <a href="terms.html">利用規約</a>
     <a href="privacy.html">プライバシーポリシー</a>
-    <span>© 2026 Rio</span>
+    <span>© 2026 Shiori</span>
   </span>
 </footer>
 </body>
