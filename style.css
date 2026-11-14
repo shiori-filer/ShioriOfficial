@@ -1,0 +1,321 @@
+/* Shiori — the page is one transit line: it runs down the left, fills with colour as
+   you scroll, and every feature is a station on it. Everything else stays quiet. */
+:root {
+  --bg: #f4f6f2;        /* cool paper, the app's own window colour family */
+  --paper: #ffffff;
+  --ink: #17201c;
+  --ink2: #4f5b56;
+  --ink3: #646e69;
+  --track: #dde3dc;     /* the line before the train has passed */
+  --green: #007f54; --orange: #e48a00; --blue: #0067c0; --purple: #7d5ba6; --slate: #5f6f7a;
+  --jp: "Zen Kaku Gothic New", "BIZ UDPGothic", "Hiragino Sans", "Yu Gothic UI", "Meiryo", sans-serif;
+  --sign: "Overpass", "Segoe UI", sans-serif; /* highway / station signage */
+  /* the rail: where it runs and how much room it takes on the left */
+  --railw: 128px; --rx: 52px; --rail: 8px;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 84px; overflow-x: clip; }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 500 16px/1.9 var(--jp); -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility;
+  font-feature-settings: "palt" 1; letter-spacing: .02em; }
+/* headings set tight (proportional kana), body text keeps a little air */
+h1, h2, h3, .btn, .top nav { font-feature-settings: "palt" 1; letter-spacing: 0; }
+a { color: inherit; }
+img, video { display: block; max-width: 100%; }
+:focus-visible { outline: 3px solid var(--blue); outline-offset: 3px; border-radius: 6px; }
+
+/* ---------------------------------------------------------------- header */
+.top { position: fixed; inset: 0 0 auto; z-index: 20; display: flex; align-items: center; height: 68px; padding: 0 clamp(16px, 3vw, 40px);
+  background: color-mix(in srgb, var(--bg) 82%, transparent); backdrop-filter: saturate(1.4) blur(14px); -webkit-backdrop-filter: saturate(1.4) blur(14px);
+  border-bottom: 1px solid transparent; transition: border-color .3s; }
+.top.scrolled { border-bottom-color: var(--track); }
+.brand { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+.brand span { font: 800 21px/1 var(--sign); letter-spacing: .02em; }
+.brand small { font: 700 15px/1 var(--jp); color: var(--green); }
+.top nav { margin-left: auto; display: flex; align-items: center; gap: 26px; font-size: 14px; }
+.top nav a { text-decoration: none; color: var(--ink2); }
+.top nav a:hover { color: var(--ink); }
+.top nav .go { color: #fff; background: var(--ink); padding: 8px 16px; border-radius: 999px; }
+.top nav .go:hover { color: #fff; background: var(--green); }
+
+/* ---------------------------------------------------------------- buttons */
+.btn { display: inline-flex; align-items: center; justify-content: center; height: 50px; padding: 0 26px; border-radius: 999px; border: 1.5px solid var(--ink);
+  text-decoration: none; font: 700 15px/1 var(--jp); letter-spacing: .04em; color: var(--ink); background: transparent; transition: background .2s, color .2s, transform .2s; }
+.btn:hover { background: var(--ink); color: #fff; }
+.btn.primary { background: var(--green); border-color: var(--green); color: #fff; }
+.btn.primary:hover { background: #00633f; border-color: #00633f; }
+.btn:active { transform: translateY(1px); }
+.btn.big { height: 60px; padding: 0 36px; font-size: 17px; }
+
+/* ---------------------------------------------------------------- the line */
+.journey { max-width: 1320px; margin: 0 auto; padding: 0 clamp(16px, 3vw, 40px); }
+.seg { position: relative; padding-left: var(--railw); }
+.rail { position: absolute; left: var(--rx); top: 0; bottom: 0; width: var(--rail); background: var(--track); }
+.rail .fill { position: absolute; left: 0; top: 0; width: 100%; height: calc(var(--p, 0) * 100%); background: var(--c); }
+.hero .rail { top: 168px; border-radius: var(--rail) var(--rail) 0 0; }
+.hero .rail .fill { border-radius: var(--rail) var(--rail) 0 0; }
+
+/* a station: the badge sits on the line; it lights up once the colour reaches it */
+.nb { position: absolute; z-index: 2; left: calc(var(--rx) + var(--rail) / 2 - 27px); width: 54px; height: 54px; display: grid; place-content: center; text-align: center;
+  border: 5px solid var(--track); border-radius: 13px; background: var(--paper); color: var(--ink3); line-height: 1;
+  transition: border-color .35s, color .35s, transform .45s cubic-bezier(.16, 1, .3, 1); }
+.nb small { display: block; font: 800 9px/1 var(--sign); letter-spacing: .06em; margin-bottom: 3px; }
+.nb b { display: block; font: 800 19px/1 var(--sign); }
+.nb.on { border-color: var(--c); color: var(--ink); transform: scale(1.06); }
+
+/* ---------------------------------------------------------------- hero */
+.hero { padding-top: 150px; padding-bottom: 120px; }
+.route-title { margin: 0; display: grid; gap: 34px; font: 900 clamp(34px, 5.3vw, 70px)/1.22 var(--jp); letter-spacing: -.01em; }
+.stop { position: relative; display: block; }
+/* the two stations of the headline, on the rail */
+.stop .dot { position: absolute; top: .38em; left: calc(var(--rx) + var(--rail) / 2 - var(--railw) - 17px); width: 34px; height: 34px; border-radius: 50%;
+  border: 7px solid var(--green); background: var(--paper); }
+.stop .t { display: inline-block; }
+.lead { max-width: 40em; margin: 40px 0 0; color: var(--ink2); font-size: clamp(16px, 1.45vw, 19px); line-height: 2; }
+.cta { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 38px; }
+.req { margin: 18px 0 0; font-size: 13px; color: var(--ink3); }
+
+/* the page-load moment: the stations drop in, the words follow along the line */
+@media (prefers-reduced-motion: no-preference) {
+  .stop .dot { transform: scale(0); }
+  .stop .t { clip-path: inset(0 100% 0 0); transform: translateX(-12px); }
+  .lead, .cta, .req { opacity: 0; transform: translateY(10px); }
+  .ready .stop .dot { animation: pop .5s cubic-bezier(.16, 1, .3, 1) forwards; }
+  .ready .stop .t { animation: draw .9s cubic-bezier(.6, 0, .2, 1) forwards; }
+  .ready .s1 .dot { animation-delay: .15s; } .ready .s1 .t { animation-delay: .3s; }
+  .ready .s2 .dot { animation-delay: .75s; } .ready .s2 .t { animation-delay: .9s; }
+  .ready .lead, .ready .cta, .ready .req { animation: rise .7s ease-out 1.5s forwards; }
+  .ready .cta { animation-delay: 1.6s; } .ready .req { animation-delay: 1.7s; }
+  .hero .rail .fill { transition: height 1.4s cubic-bezier(.6, 0, .2, 1); }
+  .scrolling .hero .rail .fill { transition: none; }
+}
+@keyframes pop { to { transform: scale(1); } }
+@keyframes draw { to { clip-path: inset(0 0 0 0); transform: none; } }
+@keyframes rise { to { opacity: 1; transform: none; } }
+
+/* the product: it starts leaning back and straightens up as it scrolls into view */
+.shot { margin: 0; border-radius: 14px; overflow: hidden; background: var(--paper);
+  box-shadow: 0 1px 0 rgb(255 255 255 / .6) inset, 0 40px 80px -36px rgb(16 32 26 / .45), 0 0 0 1px rgb(23 32 28 / .08); }
+.shot video { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; background: #e9ece7; }
+/* ---------------------------------------------------------------- hero stage: the app on a route map
+   The map is drawn in a 1600×1150 box; the window covers its middle and the lines run in under it. */
+.stage { position: relative; margin: 56px 0 0; aspect-ratio: 1600 / 1150; }
+.map { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+.ln { fill: none; stroke: var(--c); stroke-width: 12; stroke-linecap: round; stroke-linejoin: round; }
+.st .dot, .st .badge { fill: var(--paper); stroke: var(--c); }
+.st .dot { stroke-width: 7; }
+.st .badge { stroke-width: 6; }
+.st .code, .st .num { font-family: "Overpass", sans-serif; font-weight: 800; text-anchor: middle; fill: var(--ink); }
+.st .code { font-size: 11px; letter-spacing: .06em; fill: var(--ink2); }
+.st .num { font-size: 19px; }
+.st .tag { font: 700 21px "Overpass", "Zen Kaku Gothic New", sans-serif; text-anchor: middle; fill: var(--ink2); paint-order: stroke; stroke: var(--bg); stroke-width: 8px; stroke-linejoin: round; }
+.st .tag.start { text-anchor: start; }
+.train { fill: var(--paper); stroke: var(--c); stroke-width: 6; opacity: 0; transition: opacity .4s; }
+.train.go { opacity: 1; }
+.win { position: absolute; left: 7%; top: 13.04%; width: 86%; aspect-ratio: 16 / 10; border-radius: 14px; overflow: hidden; background: var(--paper);
+  box-shadow: 0 1px 0 rgb(255 255 255 / .6) inset, 0 50px 90px -40px rgb(16 32 26 / .5), 0 0 0 1px rgb(23 32 28 / .08);
+  transform-origin: 50% 0; transform: perspective(1800px) rotateX(calc(var(--tilt, 0) * 12deg)) scale(calc(1 - var(--tilt, 0) * .04)); will-change: transform; }
+.win video { width: 100%; height: 100%; object-fit: cover; background: #e9ece7; }
+
+/* first paint, after the headline: the window rises onto the map, the lines are laid out to it,
+   their stations appear, and then the trains start running in */
+@media (prefers-reduced-motion: no-preference) {
+  .js .win { opacity: 0; translate: 0 40px; filter: blur(6px); }
+  .js .ready .win { animation: arrive 1s cubic-bezier(.16, 1, .3, 1) 1.2s forwards; }
+  .js .ln { stroke-dasharray: 1; stroke-dashoffset: 1; }
+  .js .ready .ln { animation: lay 1.1s cubic-bezier(.6, 0, .2, 1) calc(1.7s + var(--d)) forwards; }
+  .js .st { opacity: 0; transform: scale(.5); transform-box: fill-box; transform-origin: center; }
+  .js .ready .st { animation: pop-in .5s cubic-bezier(.16, 1, .3, 1) calc(1.9s + var(--d)) forwards; }
+}
+@keyframes arrive { to { opacity: 1; translate: 0 0; filter: none; } }
+@keyframes lay { to { stroke-dashoffset: 0; } }
+@keyframes pop-in { to { opacity: 1; transform: none; } }
+@media (max-width: 700px) { .st .tag { display: none; } }
+
+/* a feature's screen opens from the line side once its station lights up */
+@media (prefers-reduced-motion: no-preference) {
+  .js .feature .shot { clip-path: inset(0 100% 0 0 round 14px); transition: clip-path 1s cubic-bezier(.16, 1, .3, 1); }
+  .js .feature.seen .shot { clip-path: inset(0 0 0 0 round 14px); }
+}
+
+/* ---------------------------------------------------------------- features */
+.feature { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(32px, 5vw, 72px); align-items: center; padding-top: 110px; padding-bottom: 110px; }
+.feature .nb { top: calc(110px + 6px); }
+.feature h2 { margin: 0 0 18px; font: 900 clamp(25px, 2.7vw, 36px)/1.4 var(--jp); letter-spacing: -.005em; }
+.feature p { margin: 0; color: var(--ink2); max-width: 34em; }
+.feature ul { margin: 22px 0 0; padding: 0; list-style: none; display: grid; gap: 10px; max-width: 34em; }
+.feature li { position: relative; padding-left: 24px; font-size: 15px; line-height: 1.75; color: var(--ink); }
+/* small stops in the line's colour */
+.feature li::before { content: ""; position: absolute; left: 1px; top: .5em; width: 12px; height: 12px; border-radius: 50%; border: 3.5px solid var(--c); background: var(--paper); }
+.feature .text { align-self: start; padding-top: 4px; }
+
+/* ---------------------------------------------------------------- transfer: more features */
+.more { padding-top: 120px; padding-bottom: 120px; }
+.more .nb { top: 120px; }
+.nb.transfer { width: 64px; height: 64px; left: calc(var(--rx) + var(--rail) / 2 - 32px); border-radius: 50%; }
+.nb.transfer b, .nb.terminus b { font: 900 15px/1 var(--jp); letter-spacing: .04em; }
+.more h2 { margin: 6px 0 44px; font: 900 clamp(25px, 2.7vw, 36px)/1.4 var(--jp); }
+/* each one is a short branch line with its own colour */
+.lines { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 34px 56px; }
+.lines li { position: relative; padding-left: 30px; }
+.lines li::before { content: ""; position: absolute; left: 6px; top: 14px; bottom: 2px; width: 4px; border-radius: 2px; background: color-mix(in srgb, var(--l) 35%, transparent); }
+.lines li::after { content: ""; position: absolute; left: 0; top: 4px; width: 16px; height: 16px; border-radius: 50%; border: 4px solid var(--l); background: var(--paper); }
+.lines h3 { margin: 0 0 4px; font: 700 17px/1.5 var(--jp); }
+.lines p { margin: 0; font-size: 14.5px; line-height: 1.8; color: var(--ink2); }
+
+/* ---------------------------------------------------------------- terminus */
+.download { padding-top: 140px; padding-bottom: 160px; }
+.rail.end { bottom: auto; height: calc(140px + 36px); }
+.nb.terminus { top: 140px; width: 72px; height: 72px; left: calc(var(--rx) + var(--rail) / 2 - 36px); border-radius: 50%;
+  box-shadow: 0 0 0 6px var(--bg), 0 0 0 11px var(--track); transition: border-color .35s, box-shadow .35s, color .35s, transform .45s cubic-bezier(.16, 1, .3, 1); }
+.nb.terminus.on { box-shadow: 0 0 0 6px var(--bg), 0 0 0 11px var(--c); }
+.dl-body { display: flex; flex-direction: column; align-items: flex-start; gap: 16px; }
+.dl-body img { width: 104px; height: 104px; filter: drop-shadow(0 18px 24px rgb(0 80 50 / .25)); }
+.dl-body h2 { margin: 8px 0 0; font: 900 clamp(30px, 4vw, 52px)/1.3 var(--jp); }
+.dl-body p { margin: 0; color: var(--ink2); max-width: 36em; }
+.dl-body .btn { margin-top: 12px; }
+.dl-body .note { font-size: 13px; color: var(--ink3); margin-top: 6px; }
+.dl-body .btn + .note { margin-top: 18px; }
+
+.foot { max-width: 1320px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px 24px; padding: 26px clamp(16px, 3vw, 40px) 40px; font-size: 13px; color: var(--ink3); border-top: 1px solid var(--track); }
+.f-brand { display: flex; align-items: center; gap: 8px; }
+.f-links { display: flex; flex-wrap: wrap; gap: 6px 22px; align-items: center; }
+.f-links a { text-decoration: none; }
+.f-links a:hover { color: var(--ink); text-decoration: underline; }
+
+/* ---------------------------------------------------------------- terms / privacy
+   The page title is a station sign (駅名標): the name, its reading, and a band in the line's
+   colour naming the stations on either side. The articles are a short line of their own,
+   drawn as a route map on the left that lights up the article being read. */
+.doc { max-width: 1120px; margin: 0 auto; padding: 116px clamp(20px, 5vw, 48px) 88px; }
+
+.sign { position: relative; max-width: 860px; margin: 0 auto; background: var(--paper); border-radius: 22px; overflow: hidden;
+  border: 1px solid var(--track); box-shadow: 0 40px 80px -56px rgba(23, 32, 28, .45); }
+.sign-body { padding: clamp(34px, 6vw, 58px) 24px clamp(26px, 4vw, 38px); text-align: center; }
+.sign h1 { margin: 0; font: 900 clamp(36px, 6.4vw, 68px)/1.15 var(--jp); letter-spacing: .06em; }
+.sign .reading { margin: 12px 0 0; font: 700 clamp(15px, 1.8vw, 19px)/1 var(--sign); color: var(--ink3); letter-spacing: .06em; }
+.sign-band { position: relative; display: flex; justify-content: space-between; align-items: center; height: 58px; padding: 0 clamp(14px, 3vw, 28px);
+  background: var(--c); color: #fff; font: 700 15px/1 var(--jp); }
+.sign-band a { text-decoration: none; display: inline-flex; align-items: center; gap: 10px; padding: 8px 4px; border-radius: 8px; }
+.sign-band a:hover span:not(.arw) { text-decoration: underline; text-underline-offset: 4px; }
+.sign-band .arw { font: 800 18px/1 var(--sign); transition: transform .2s; }
+.sign-band .prev:hover .arw { transform: translateX(-4px); }
+.sign-band .next:hover .arw { transform: translateX(4px); }
+.sign-band::after { content: ""; position: absolute; left: 50%; top: 50%; width: 26px; height: 26px; margin: -13px 0 0 -13px; border-radius: 50%;
+  background: #fff; box-shadow: 0 0 0 5px color-mix(in srgb, #fff 35%, transparent); }
+.doc .meta { margin: 22px 0 0; text-align: center; font-size: 13px; color: var(--ink3); }
+
+.doc-grid { display: grid; grid-template-columns: 230px minmax(0, 1fr); column-gap: clamp(32px, 5vw, 72px); margin-top: 64px; }
+.doc .intro { grid-column: 2; margin: 0 0 8px; font-size: 17px; line-height: 2; color: var(--ink); max-width: 40em; }
+
+/* route map (built by legal.js from the article headings) */
+.route { grid-row: 1 / span 3; position: sticky; top: 100px; align-self: start; }
+.route[hidden] { display: none; }
+.route ol { position: relative; list-style: none; margin: 0; padding: 0; }
+.route ol::before, .route ol::after { content: ""; position: absolute; left: 9px; top: 18px; width: 4px; border-radius: 2px; }
+.route ol::before { bottom: 18px; background: var(--track); }
+.route ol::after { height: var(--fill, 0px); background: var(--ink); transition: height .45s cubic-bezier(.4, 0, .2, 1); }
+.route li { position: relative; }
+.route a { display: flex; align-items: center; gap: 14px; padding: 7px 0; text-decoration: none; font-size: 14px; line-height: 1.5; color: var(--ink3); transition: color .2s; }
+.route a:hover { color: var(--ink); }
+.route i { position: relative; z-index: 1; flex: none; width: 22px; height: 22px; border-radius: 50%; background: var(--bg); border: 4px solid var(--track);
+  transition: border-color .3s, background .3s, transform .3s cubic-bezier(.16, 1, .3, 1); }
+.route .passed i { border-color: var(--c); }
+.route .passed a { color: var(--ink2); }
+.route .here i { border-color: var(--c); background: var(--c); box-shadow: inset 0 0 0 4px var(--paper); transform: scale(1.18); }
+.route .here a { color: var(--ink); font-weight: 700; }
+
+/* articles: each heading carries a station number, like the features on the top page */
+.articles { grid-column: 2; list-style: none; margin: 0; padding: 0; }
+.articles > li { display: grid; grid-template-columns: 58px minmax(0, 1fr); column-gap: 22px; padding: 34px 0; border-top: 1px solid var(--track); scroll-margin-top: 90px; }
+.articles > li:first-child { border-top: 0; }
+.articles > li > * { grid-column: 2; }
+.articles .no { grid-column: 1; grid-row: 1 / span 9; width: 58px; height: 58px; border-radius: 14px; border: 5px solid var(--c, var(--green)); background: var(--paper);
+  display: grid; place-content: center; text-align: center; }
+.articles .no small { display: block; font: 800 9px/1 var(--sign); letter-spacing: .06em; margin-bottom: 3px; color: var(--ink2); }
+.articles .no b { display: block; font: 800 20px/1 var(--sign); }
+.articles h2 { margin: 2px 0 10px; font: 700 clamp(19px, 2vw, 22px)/1.55 var(--jp); }
+.articles p, .articles li li { font-size: 15.5px; line-height: 1.95; color: var(--ink2); }
+.articles p { margin: 0 0 10px; max-width: 40em; }
+.articles ul { margin: 0 0 10px; padding: 0; list-style: none; max-width: 40em; }
+.articles ul li { position: relative; margin: 4px 0; padding-left: 20px; }
+.articles ul li::before { content: ""; position: absolute; left: 2px; top: .78em; width: 8px; height: 8px; border-radius: 50%; border: 2px solid var(--c, var(--green)); }
+.articles a { text-underline-offset: 3px; text-decoration-color: color-mix(in srgb, var(--ink) 35%, transparent); }
+.articles a:hover { text-decoration-color: currentColor; }
+.articles code { font: 500 .88em/1 Consolas, "BIZ UDGothic", monospace; background: var(--paper); border: 1px solid var(--track); padding: 3px 7px; border-radius: 7px; white-space: nowrap; color: var(--ink); }
+.articles strong { color: var(--ink); font-weight: 700; }
+
+.contact { grid-column: 2; display: grid; grid-template-columns: 58px minmax(0, 1fr); column-gap: 22px; align-items: start; margin-top: 8px; padding: 30px 30px 30px 18px;
+  border-radius: 22px; background: var(--ink); color: #dfe6e1; }
+.contact::before { content: "?"; grid-row: 1 / span 2; justify-self: end; width: 40px; height: 40px; border-radius: 50%; background: #fff; color: var(--ink); display: grid; place-items: center; font: 800 20px/1 var(--sign); }
+.contact h2 { margin: 4px 0 6px; font: 700 18px/1.5 var(--jp); color: #fff; }
+.contact p { margin: 0; font-size: 15px; line-height: 1.9; }
+.contact a { color: #fff; text-underline-offset: 3px; }
+
+/* first paint: the name settles, the band runs out from the left, then the sign's dot,
+   its neighbours and the route map's stations appear in turn */
+@media (prefers-reduced-motion: no-preference) {
+  .sign-band { transform-origin: left; transform: scaleX(0); }
+  .sign-band > a, .sign-band::after { opacity: 0; }
+  .sign h1, .sign .reading { opacity: 0; transform: translateY(10px); }
+  .ready .sign h1 { animation: rise .7s cubic-bezier(.2, .7, .2, 1) .05s forwards; }
+  .ready .sign .reading { animation: rise .7s cubic-bezier(.2, .7, .2, 1) .2s forwards; }
+  .ready .sign-band { animation: run .8s cubic-bezier(.6, 0, .2, 1) .35s forwards; }
+  .ready .sign-band::after { animation: dot .45s cubic-bezier(.16, 1, .3, 1) 1.05s forwards; }
+  .ready .sign-band > a { animation: fade .5s ease-out 1.1s forwards; }
+  .route li { opacity: 0; transform: translateX(-8px); }
+  .ready .route li { animation: rise .45s ease-out forwards; animation-delay: calc(1.1s + var(--i) * 60ms); }
+}
+@keyframes run { to { transform: scaleX(1); } }
+@keyframes fade { to { opacity: 1; } }
+@keyframes dot { from { opacity: 1; transform: scale(0); } to { opacity: 1; transform: scale(1); } }
+
+@media (max-width: 920px) {
+  .doc { padding-top: 96px; }
+  .doc-grid { grid-template-columns: minmax(0, 1fr); margin-top: 44px; }
+  .route { display: none; }
+  .doc .intro, .articles, .contact { grid-column: 1; }
+  .sign-band { height: 50px; font-size: 13px; }
+  .sign-band::after { width: 20px; height: 20px; margin: -10px 0 0 -10px; }
+}
+@media (max-width: 560px) {
+  .articles > li, .contact { grid-template-columns: 42px minmax(0, 1fr); column-gap: 16px; }
+  .articles .no { width: 42px; height: 42px; border-width: 4px; border-radius: 11px; }
+  .articles .no small { font-size: 7px; } .articles .no b { font-size: 15px; }
+  .contact { padding: 24px 22px 24px 12px; }
+  .contact::before { width: 32px; height: 32px; font-size: 16px; }
+  .sign-band .long { display: none; }
+  .sign h1 { font-size: 7.4vw; letter-spacing: .02em; }
+  .articles code { font-size: .82em; padding: 2px 5px; }
+}
+
+/* ---------------------------------------------------------------- narrow screens: the rail becomes thin */
+@media (max-width: 920px) {
+  :root { --railw: 56px; --rx: 14px; --rail: 5px; }
+  .feature { grid-template-columns: 1fr; gap: 28px; padding-top: 80px; padding-bottom: 80px; }
+  .feature .nb { top: 80px; }
+  .nb { width: 38px; height: 38px; border-width: 4px; border-radius: 10px; left: calc(var(--rx) + var(--rail) / 2 - 19px); }
+  .nb small { font-size: 7px; } .nb b { font-size: 14px; }
+  .nb.transfer { width: 44px; height: 44px; left: calc(var(--rx) + var(--rail) / 2 - 22px); }
+  .nb.terminus { width: 48px; height: 48px; left: calc(var(--rx) + var(--rail) / 2 - 24px); box-shadow: 0 0 0 4px var(--bg), 0 0 0 8px var(--track); }
+  .nb.terminus.on { box-shadow: 0 0 0 4px var(--bg), 0 0 0 8px var(--c); }
+  .nb.transfer b, .nb.terminus b { font-size: 11px; }
+  .stop .dot { width: 24px; height: 24px; border-width: 5px; left: calc(var(--rx) + var(--rail) / 2 - var(--railw) - 12px); }
+  .hero { padding-top: 120px; padding-bottom: 80px; }
+  .hero .rail { top: 136px; }
+  .route-title { gap: 22px; }
+  .lines { grid-template-columns: 1fr; gap: 26px; }
+  .more, .download { padding-top: 80px; padding-bottom: 100px; }
+  .more .nb, .nb.terminus { top: 80px; }
+  .rail.end { height: calc(80px + 24px); }
+}
+@media (max-width: 560px) {
+  .top nav a:not(.go) { display: none; }
+  .route-title { font-size: 28px; }
+}
+/* break Japanese headings between phrases, not inside a word */
+h1, h2, h3 { word-break: auto-phrase; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .win { transform: none; }
+  .nb { transition: none; }
+}

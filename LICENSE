@@ -1,21 +1,41 @@
-MIT License
+Shiori 使用許諾契約
 
-Copyright (c) 2026 Rio
+Copyright (c) 2026 Rio. All rights reserved.
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+この契約は、Windows 用ファイラー「Shiori」（インストーラー、プログラム、付属の文書を含みます。以下「本ソフトウェア」）を使うときの条件です。本ソフトウェアをインストールまたは使用した時点で、この契約に同意したものとします。
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+第1条（権利の帰属）
+本ソフトウェアの著作権その他の権利は、提供者（Rio）に帰属します。この契約は本ソフトウェアを使う権利を許諾するもので、権利を譲渡するものではありません。
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+第2条（使用の許諾）
+提供者は利用者に対し、次のことを無料で許諾します。
+  1. 個人・法人を問わず、業務を含むあらゆる目的で、台数の制限なく本ソフトウェアを使うこと
+  2. 同じ組織（会社・団体など）の中で、改変していないインストーラーを配布し、組織内のパソコンにインストールすること
+
+第3条（禁止事項）
+利用者は、次のことをしてはなりません。
+  1. 本ソフトウェアやインストーラーを組織の外へ再配布すること（ウェブサイト、ファイル共有サービス、配布メディアなどへの掲載を含みます）。公式サイトへのリンクを紹介することは自由です。
+  2. 本ソフトウェアを販売・貸与すること、または対価を得て提供すること
+  3. 本ソフトウェアを改変すること、またはリバースエンジニアリング・逆コンパイル・逆アセンブルすること（法令で認められる場合を除きます）
+  4. 本ソフトウェアに含まれる著作権表示や、この契約の表示を削除・変更すること
+
+第4条（オープンソースソフトウェア）
+本ソフトウェアにはオープンソースソフトウェアが含まれています。それらにはそれぞれのライセンスが適用され、この契約はそれらのライセンスで認められた権利を制限しません。一覧とライセンスの全文は、本ソフトウェアの「設定 → このアプリについて」で確認できます。
+
+第5条（保証しないこと）
+本ソフトウェアは「現状のまま」提供します。不具合がないこと、特定の目的に合うこと、すべての環境で動くことは保証しません。ファイルの削除・移動・上書きなどの操作は利用者の指示どおりに実行されます。大切なデータはバックアップを取ってからお使いください。
+
+第6条（責任の範囲）
+本ソフトウェアを使ったこと、または使えなかったことで生じた損害（データの消失を含みます）について、提供者は法令で認められる範囲で責任を負いません。ただし、提供者の故意または重大な過失による場合など、法令（消費者契約法など）により責任を免れることができない場合は、この限りではありません。
+
+第7条（許諾の終了）
+利用者がこの契約に違反した場合、第2条の許諾は終了します。その場合、利用者は本ソフトウェアを削除するものとします。
+
+第8条（契約の変更）
+この契約は変更することがあります。変更後の契約は公式サイトに掲載した時点から効力を持ちます。
+
+第9条（準拠法）
+この契約は日本の法律に従って解釈します。
+
+公式サイト: https://rio-jp.github.io/ShioriOfficial/
+お問い合わせ: https://github.com/Rio-jp/ShioriOfficial/issues

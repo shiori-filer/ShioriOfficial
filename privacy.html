@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>プライバシーポリシー — Shiori 栞</title>
+<meta name="description" content="Shiori（Windows 用ファイラー）と紹介サイトのプライバシーポリシーです。">
+<meta name="theme-color" content="#f4f6f2">
+<link rel="icon" href="media/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Overpass:wght@600;800&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="top scrolled">
+  <a class="brand" href="./" aria-label="Shiori トップへ"><img src="media/icon.png" alt="" width="30" height="30"><span>Shiori</span><small>栞</small></a>
+  <nav aria-label="サイト内">
+    <a href="./#f1">機能</a>
+    <a class="go" href="./#download">ダウンロード</a>
+  </nav>
+</header>
+
+<main class="doc">
+  <header class="sign" style="--c: var(--blue)">
+    <div class="sign-body">
+      <h1>プライバシーポリシー</h1>
+      <p class="reading">Privacy Policy</p>
+    </div>
+    <nav class="sign-band" aria-label="となりのページ">
+      <a class="prev" href="terms.html"><span class="arw">&larr;</span><span>利用規約</span></a>
+      <a class="next" href="./"><span>トップ</span><span class="arw">&rarr;</span></a>
+    </nav>
+  </header>
+  <p class="meta">2026年11月14日 制定</p>
+
+  <div class="doc-grid">
+  <aside class="route" aria-label="目次" hidden></aside>
+  <p class="intro">Windows 用ファイラー「Shiori」（以下「本ソフトウェア」）は、利用者の情報を集めません。設定もフォルダの一覧も、すべて利用者のパソコンの中だけに保存されます。以下に、何がどこに保存され、何が外に出るのかを書いておきます。</p>
+
+  <ol class="articles">
+    <li id="a1">
+      <span class="no" aria-hidden="true"><small>PP</small><b>01</b></span>
+      <h2>本ソフトウェアは通信しません</h2>
+      <p>本ソフトウェアがインターネットに接続することはありません。利用状況の送信、更新の確認、広告の表示は行いません。プレビューで Markdown を表示するときも、外部の画像は読み込みません。</p>
+    </li>
+    <li id="a2">
+      <span class="no" aria-hidden="true"><small>PP</small><b>02</b></span>
+      <h2>パソコンに保存するもの</h2>
+      <p>本ソフトウェアは次の情報を、利用者のパソコンにだけ保存します。</p>
+      <ul>
+        <li><strong>ワークスペースと登録したフォルダ</strong>、<strong>設定</strong>: <code>%APPDATA%\jp.shiori.app\</code> の <code>workspaces.toml</code> と <code>settings.toml</code></li>
+        <li><strong>よく開くフォルダの記録</strong>（移動の候補を並べるため）: 同じフォルダの <code>usage.json</code></li>
+        <li><strong>開いていたタブと履歴、列の幅など画面の配置</strong>（再起動しても元に戻すため）: <code>%LOCALAPPDATA%\jp.shiori.app\</code></li>
+        <li><strong>圧縮ファイルの中から開いたファイル</strong>: 一時フォルダ <code>%TEMP%\shiori-zip\</code></li>
+      </ul>
+      <p>アンインストールしたあと、これらのフォルダを削除すると、すべて消えます。</p>
+    </li>
+    <li id="a3" style="--c: var(--orange)">
+      <span class="no" aria-hidden="true"><small>PP</small><b>03</b></span>
+      <h2>利用者の操作で起きる通信</h2>
+      <p>次の通信は本ソフトウェアではなく、Windows やほかのソフトウェアが行います。</p>
+      <ul>
+        <li>共有フォルダ・ネットワークドライブ・OneDrive などを開いたときの、Windows によるファイルの読み書きや同期</li>
+        <li>本ソフトウェアから起動した Git、エディタ、右クリックメニューの項目などが行う通信（それぞれの提供元の方針に従います）</li>
+        <li>Microsoft Edge WebView2 ランタイムが Microsoft に送る診断データ（Windows の「診断データ」の設定に従います）</li>
+      </ul>
+    </li>
+    <li id="a4" style="--c: var(--blue)">
+      <span class="no" aria-hidden="true"><small>PP</small><b>04</b></span>
+      <h2>紹介サイトについて</h2>
+      <p>このサイトは Cookie を使わず、アクセス解析も入れていません。ただし、表示のために次のサービスを使っており、閲覧すると IP アドレスやブラウザの種類などがそれぞれの事業者に送られます。</p>
+      <ul>
+        <li>GitHub Pages（サイトの配信）と GitHub Releases（インストーラーの配布）: <a href="https://docs.github.com/ja/site-policy/privacy-policies/github-general-privacy-statement">GitHub のプライバシーに関する声明</a></li>
+        <li>Google Fonts（文字の表示）: <a href="https://policies.google.com/privacy?hl=ja">Google のプライバシーポリシー</a></li>
+      </ul>
+    </li>
+    <li id="a5" style="--c: var(--purple)">
+      <span class="no" aria-hidden="true"><small>PP</small><b>05</b></span>
+      <h2>第三者への提供</h2>
+      <p>提供者は利用者の個人情報を集めていないため、第三者に提供することもありません。</p>
+    </li>
+    <li id="a6" style="--c: var(--purple)">
+      <span class="no" aria-hidden="true"><small>PP</small><b>06</b></span>
+      <h2>このポリシーの変更</h2>
+      <p>このポリシーは変更することがあります。変更後のポリシーは、このページに掲載した時点から効力を持ちます。</p>
+    </li>
+  </ol>
+
+  <div class="contact">
+    <h2>お問い合わせ</h2>
+    <p>このポリシーについてのご質問は <a href="https://github.com/Rio-jp/ShioriOfficial/issues">GitHub の Issues</a> へお寄せください。Issues は誰でも見られるため、個人情報や社内の情報は書かないでください。</p>
+  </div>
+  </div>
+</main>
+<script src="legal.js" defer></script>
+
+<footer class="foot">
+  <span class="f-brand"><img src="media/icon.png" alt="" width="20" height="20">Shiori 栞</span>
+  <span class="f-links">
+    <a href="terms.html">利用規約</a>
+    <a href="privacy.html">プライバシーポリシー</a>
+    <span>© 2026 Rio</span>
+  </span>
+</footer>
+</body>
+</html>
