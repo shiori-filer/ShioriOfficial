@@ -127,6 +127,7 @@
       <p>リポジトリを開くと、ブランチ名と、まだコミットしていない変更の数が出ます。数えるのは今開いているフォルダの中だけ。押せば、変更されたファイルの一覧からその場所へすぐ移れます。</p>
       <ul>
         <li>TortoiseGit と同じ見た目のバッジ（変更・追加・未追跡・無視）</li>
+        <li>このフォルダのログを一覧で。変更したファイルの差分を左右に並べて比べられます（WinMerge があればそちらでも）</li>
         <li>まだプッシュしていないコミット数も表示</li>
         <li>読み取りだけ。fetch や pull など、リポジトリを変えることはしません</li>
       </ul>
@@ -220,6 +221,38 @@
         <li style="--l: var(--blue)"><h3>WinMerge で比較</h3><p>2 つ選んで右クリック。ファイル同士もフォルダ同士も比べられます。</p></li>
         <li style="--l: var(--purple)"><h3>4 つの配色</h3><p>昼・夜行・常磐・墨。暗い部屋向けや、白黒の高コントラストも。</p></li>
       </ul>
+    </div>
+  </section>
+
+  <!-- ===================================================== compared with Explorer -->
+  <section class="seg compare" id="compare" style="--c: var(--slate)">
+    <div class="rail"><i class="fill"></i></div>
+    <span class="nb transfer" aria-hidden="true"><b>比較</b></span>
+    <div class="cmp-body">
+      <h2>エクスプローラーと比べると。</h2>
+      <p class="cmp-lead">いつものエクスプローラーはそのまま使えます。Shiori は、案件ごとに仕事をするときに足りないところを補います。</p>
+      <div class="cmp-wrap">
+        <table class="cmp">
+          <thead>
+            <tr><th scope="col">できること</th><th scope="col" class="me">Shiori</th><th scope="col">エクスプローラー（Windows 11）</th></tr>
+          </thead>
+          <tbody>
+            <tr><th scope="row">案件ごとにフォルダをまとめる</th><td class="me"><span class="y">あり</span>ワークスペース（階層・色・略称）</td><td><span class="p">一部</span>クイックアクセスへのピン留め</td></tr>
+            <tr><th scope="row">別々の場所のフォルダを 1 か所に</th><td class="me"><span class="y">あり</span>共有フォルダ・別のドライブ・リポジトリを登録</td><td><span class="n">なし</span></td></tr>
+            <tr><th scope="row">開いていたタブを案件ごとに覚える</th><td class="me"><span class="y">あり</span>再起動しても元どおり</td><td><span class="p">一部</span>タブはあるが、案件ごとには分けられない</td></tr>
+            <tr><th scope="row">左右 2 画面</th><td class="me"><span class="y">あり</span>ドラッグでコピー・移動</td><td><span class="n">なし</span>ウィンドウを 2 つ並べる</td></tr>
+            <tr><th scope="row">ファイルの中身で検索</th><td class="me"><span class="y">あり</span>Excel・Word・PowerPoint の中も、その場で</td><td><span class="p">一部</span>インデックスのある場所が中心</td></tr>
+            <tr><th scope="row">開かずに中身を見る</th><td class="me"><span class="y">あり</span>Space で次々に（Excel・Word・Markdown・コード）</td><td><span class="p">一部</span>プレビュー ウィンドウ</td></tr>
+            <tr><th scope="row">Git のブランチ・変更・ログと差分</th><td class="me"><span class="y">あり</span>今のフォルダの分だけ表示</td><td><span class="n">なし</span></td></tr>
+            <tr><th scope="row">フォルダ構成ごとのテンプレート</th><td class="me"><span class="y">あり</span>名前を付けるだけで同じ構成に</td><td><span class="n">なし</span></td></tr>
+            <tr><th scope="row">場所を取っているフォルダを探す</th><td class="me"><span class="y">あり</span>大きい順、作り直せるフォルダに印</td><td><span class="p">一部</span>設定の「ストレージ」</td></tr>
+            <tr><th scope="row">右クリックのよく使う項目</th><td class="me"><span class="y">あり</span>7-Zip・TortoiseGit などを直接並べる</td><td><span class="p">一部</span>「その他のオプションを確認」の中</td></tr>
+            <tr><th scope="row">キーボードだけで操作</th><td class="me"><span class="y">あり</span>コマンドパレット、何でも入るアドレス欄</td><td><span class="p">一部</span></td></tr>
+            <tr><th scope="row">画面共有でほかのお客様の名前を隠す</th><td class="me"><span class="y">あり</span>Ctrl+B で一覧を折りたたむ</td><td><span class="n">なし</span></td></tr>
+            <tr><th scope="row">インストール</th><td class="me"><span class="p">必要</span>無料・管理者の権限は不要</td><td><span class="y">不要</span>Windows に入っている</td></tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </section>
 
