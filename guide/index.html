@@ -103,18 +103,20 @@
         <img src="img/overview.webp" alt="Shiori の画面全体。左にサイドバー、右にファイルの一覧" width="1280" height="800">
         <span class="pin" style="left: 22%; top: 7.9%">1</span>
         <span class="pin" style="left: 15.6%; top: 20%">2</span>
-        <span class="pin" style="left: 15.6%; top: 40.4%">3</span>
-        <span class="pin" style="left: 32.6%; top: 2.5%">4</span>
-        <span class="pin" style="left: 61.7%; top: 7.3%">5</span>
-        <span class="pin" style="left: 85.2%; top: 11%">6</span>
-        <span class="pin" style="left: 80.8%; top: 13.3%">7</span>
-        <span class="pin" style="left: 58.6%; top: 19%">8</span>
-        <span class="pin" style="left: 46.9%; top: 70%">9</span>
-        <span class="pin" style="left: 6.5%; top: 98%">10</span>
+        <span class="pin" style="left: 15.6%; top: 36.5%">3</span>
+        <span class="pin" style="left: 15.6%; top: 74.1%">4</span>
+        <span class="pin" style="left: 32.6%; top: 2.5%">5</span>
+        <span class="pin" style="left: 61.7%; top: 7.3%">6</span>
+        <span class="pin" style="left: 85.2%; top: 11%">7</span>
+        <span class="pin" style="left: 80.8%; top: 13.3%">8</span>
+        <span class="pin" style="left: 58.6%; top: 19%">9</span>
+        <span class="pin" style="left: 46.9%; top: 70%">10</span>
+        <span class="pin" style="left: 6.5%; top: 98%">11</span>
       </figure>
       <ol class="legend">
         <li><b>ワークスペースへ移動</b><span>名前の一部で探して開きます（<kbd>Ctrl</kbd>+<kbd>K</kbd>）。</span></li>
         <li><b>ピン留め・PC</b><span>よく使うフォルダと、ドライブの一覧。</span></li>
+        <li><b>OneDrive</b><span>アカウント（個人用・会社ごと）にまとまって並びます。会社の SharePoint から同期したフォルダも。</span></li>
         <li><b>ワークスペース</b><span>案件ごとのフォルダのまとまり。色と略称で見分けます。</span></li>
         <li><b>タブ</b><span>ワークスペースごとに、開いていたタブを覚えています。</span></li>
         <li><b>パスのバー</b><span>今いる場所。クリックすると、その階層へ移動します。</span></li>
@@ -140,7 +142,8 @@
         <li><b>並べ替え:</b> サイドバーでドラッグ。右クリックで名前の変更・色・略称（HKB など）の編集。</li>
         <li><b>上から順に開く:</b> <kbd>Ctrl</kbd>+<kbd>1</kbd>〜<kbd>9</kbd>。</li>
         <li><b>外す:</b> 右クリック →「Shiori から外す」。<b>フォルダそのものは消えません。</b></li>
-        <li>接続できないフォルダ（VPN が切れている共有フォルダなど）には「未接続」と出ます。</li>
+        <li>接続できないフォルダ（VPN が切れている共有フォルダなど）には「未接続」、削除や移動で見つからないフォルダには「見つかりません」と出ます。押すと、場所を選び直す・上の階層を開く・登録から外す（フォルダは消えません）を選べます。</li>
+        <li>ピン留めやテンプレートのフォルダが見つからないときは、薄く表示されます。開いていたフォルダが見つからないときは、近くの上の階層を開きます。</li>
       </ul>
       <h3>名前で探して開く</h3>
       <div class="pair">
@@ -188,6 +191,7 @@
         <li>パスのバーの各部分をクリックすると、その階層へ。長いパスで「…」になっている部分も、押すと一覧が出ます。</li>
         <li>一覧で文字を打つと、その名前で始まるファイルへカーソルが移ります（エクスプローラーと同じ）。</li>
         <li>よく使うフォルダは、右クリックの「ピン留め」でサイドバーに並べられます。</li>
+        <li>OneDrive は、サイドバーの「OneDrive」にアカウントごと（個人用・会社ごと）にまとまって並びます。会社の SharePoint や Teams から同期したフォルダも、その会社の下に入ります。ワークスペースと同じように折りたためます。</li>
         <li>ZIP・7z などの圧縮ファイルは、ダブルクリックでフォルダのように中へ入れます（7z・rar は 7-Zip が必要）。</li>
       </ul>
     </section>
@@ -208,6 +212,7 @@
       <ul class="do">
         <li>今のフォルダの中だけを名前で絞るときは <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>F</kbd>。</li>
         <li>一覧の上の「Excel」「Word」などのボタンで、種類ごとに絞れます。</li>
+        <li>並び順は列の見出しをクリックして変えます（右クリックで一覧から選べます）。並び順はフォルダごとに覚えていて、ダウンロードのフォルダは最初から新しい順です。名前順ではフォルダが先、続いてファイル。更新日時・サイズ順ではフォルダとファイルを区別せずに並べます（見出しの右クリックで、フォルダを先にすることもできます）。</li>
       </ul>
     </section>
 
@@ -264,8 +269,36 @@
       <p>Git のリポジトリを開くと、パスのバーの右にブランチ名と、まだコミットしていない変更の数が出ます。数えるのは今開いているフォルダの中だけです。押すと、変更のあるファイルの一覧が出ます。</p>
       <figure>
         <img src="img/git.webp" alt="ブランチ名と変更の数のボタンを押して、変更のあるファイルの一覧が出ているところ" width="1280" height="800" loading="lazy">
-        <figcaption>読み取りだけで、fetch や pull などはしません。一覧の変更のあるファイルにも印が付きます。</figcaption>
+        <figcaption>変更の種類と件数、変更のあるファイルの一覧。下の「ログを見る」でコミットの一覧を開けます。読み取りだけで、fetch や pull などはしません。一覧の変更のあるファイルにも印が付きます。</figcaption>
       </figure>
+      <h3>ログと差分</h3>
+      <p>Git のボタンの「ログを見る」、右クリックの「Git のログを見る」、<kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>L</kbd> で、今のフォルダを変更したコミットの一覧を別のウィンドウで開きます。ファイルを右クリックすると、そのファイルだけの履歴も見られます。</p>
+      <figure>
+        <img src="img/gitlog.webp" alt="Git のログのウィンドウ。グラフ・アクション・件名・作者・日時の列でコミットが並び、下にメッセージと変更したファイル" width="1280" height="800" loading="lazy">
+        <figcaption>コミットの一覧。左の「グラフ」でブランチとマージの流れが、「アクション」で変更の種類（M 変更・A 追加・D 削除・R 名前の変更）がわかります。選んだコミットのメッセージと変更したファイル（変更行の合計つき）が下に出ます。</figcaption>
+      </figure>
+      <ul class="do">
+        <li>いちばん上の「コミットしていない変更」で、作業中の変更も確かめられます。</li>
+        <li>上の欄で、メッセージ・作者・コミット ID で絞り込めます（<kbd>Ctrl</kbd>+<kbd>F</kbd>）。</li>
+        <li>一覧と下の詳細の境目は、ドラッグで高さを変えられます。</li>
+      </ul>
+      <h3>ほかのブランチのログ</h3>
+      <div class="pair">
+        <figure>
+          <img src="img/gitbranches.webp" alt="ブランチ名のボタンを押して、ローカル・リモートのブランチとタグの一覧が出ているところ" width="1280" height="800" loading="lazy">
+          <figcaption>左上のブランチ名を押すと、ブランチとタグの一覧が出ます。選ぶとそのブランチのログを表示します。</figcaption>
+        </figure>
+        <figure>
+          <img src="img/gitdiff.webp" alt="差分のウィンドウ。変更前と変更後が左右に並び、変わった行と文字に色が付いている" width="1280" height="800" loading="lazy">
+          <figcaption>ファイルをダブルクリック（または <kbd>Enter</kbd>）すると、差分のウィンドウで変更前と変更後を並べて比べます。コードはプレビューと同じように色分けして表示します。</figcaption>
+        </figure>
+      </div>
+      <ul class="do">
+        <li>ほかのブランチは<b>表示するだけ</b>で、チェックアウトはしません。「すべてのブランチ」で全部のブランチのコミットを並べることもできます。</li>
+        <li>差分のウィンドウは 1 つで、別のファイルを開くと切り替わります。<kbd>Alt</kbd>+<kbd>→</kbd> / <kbd>Alt</kbd>+<kbd>←</kbd> で同じコミットの次 / 前のファイル、<kbd>Alt</kbd>+<kbd>↓</kbd> / <kbd>Alt</kbd>+<kbd>↑</kbd>（または <kbd>F7</kbd>）で次 / 前の変更へ。</li>
+        <li>ログのウィンドウを閉じると、そこから開いた差分のウィンドウも閉じます。</li>
+        <li>WinMerge が入っていれば、ボタンから WinMerge でも比べられます。ファイルを右クリックすると、そのバージョンを開く、変更前のバージョンを開く、このファイルの履歴、Shiori で場所を表示、など。</li>
+      </ul>
     </section>
 
     <section class="ch" id="disk" style="--c: var(--slate)">
