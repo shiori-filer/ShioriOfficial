@@ -36,7 +36,7 @@ Shiori は、ひとつの案件のフォルダを「ワークスペース」に�
 | **フォルダごとのテンプレート** | 「01_要件定義」「02_基本設計」…といった案件フォルダのひな形を、フォルダ構成ごとテンプレートにできます。 |
 
 ほかにも、ZIP・7z の中をそのまま開く、Ctrl+Z でごみ箱に入れた削除も元に戻す、OneDrive の同期状態の表示、WinMerge での比較、4 つの配色など。
-詳しくは[公式サイト](https://shiori-filer.github.io/ShioriOfficial/)の動画をご覧ください。
+詳しくは[公式サイト](https://shiori-filer.github.io/ShioriOfficial/)の動画と、[使い方ガイド](https://shiori-filer.github.io/ShioriOfficial/guide/)（写真つき）をご覧ください。
 
 <p>
   <img src="media/workspaces.jpg" width="49%" alt="ワークスペースを切り替える画面">
@@ -99,6 +99,7 @@ Issues は誰でも見られるため、個人情報や社内の情報（実際�
 | 場所 | 中身 |
 |---|---|
 | `index.html`、`terms.html`、`privacy.html`、`style.css`、`*.js` | 公式サイト |
+| `guide/` | 使い方ガイド（アプリの F1 で開くものと同じ） |
 | `media/` | サイトの動画と画像（デモ用の架空のデータで撮影しています） |
 | `download/` | インストーラー |
 

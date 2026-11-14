@@ -1,0 +1,354 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Shiori の使い方</title>
+<!-- The user guide. Opened from the app (F1 / Shiori について) in its own window, and published
+     on the official site as /guide/. Self-contained: Windows' own fonts, images in img/. -->
+<style>
+  :root {
+    --bg: #f4f6f2; --paper: #fff; --ink: #17201c; --ink2: #4f5b56; --ink3: #646e69; --rule: #dde3dc;
+    --green: #007f54; --orange: #e48a00; --blue: #0067c0; --purple: #7d5ba6; --slate: #5f6f7a; --focus: #1f5ea8;
+    --jp: "BIZ UDPGothic", "Yu Gothic UI", "Meiryo", sans-serif;
+    --mono: "Cascadia Mono", Consolas, monospace;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; scroll-padding-top: 20px; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font: 15px/1.85 var(--jp); -webkit-font-smoothing: antialiased; }
+  a { color: var(--focus); }
+  :focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; border-radius: 4px; }
+  ::selection { background: #cfe0f5; }
+
+  .layout { display: grid; grid-template-columns: 250px minmax(0, 1fr); max-width: 1240px; margin: 0 auto; }
+  /* route map of the chapters on the left, like the sidebar of the app */
+  nav.toc { position: sticky; top: 0; align-self: start; height: 100vh; overflow: auto; padding: 28px 18px 28px 26px; }
+  .brand { display: flex; align-items: center; gap: 10px; margin-bottom: 22px; font-weight: 700; font-size: 17px; }
+  .brand i { width: 14px; height: 14px; border-radius: 4px; background: var(--green); }
+  .toc ol { list-style: none; margin: 0; padding: 0; position: relative; }
+  .toc ol::before { content: ""; position: absolute; left: 7px; top: 12px; bottom: 12px; width: 3px; border-radius: 2px; background: var(--rule); }
+  .toc li a { position: relative; display: flex; align-items: center; gap: 12px; padding: 5px 0; color: var(--ink2); text-decoration: none; font-size: 13.5px; line-height: 1.5; }
+  .toc li a::before { content: ""; flex: none; width: 17px; height: 17px; border-radius: 50%; border: 3px solid var(--c, var(--slate)); background: var(--bg); z-index: 1; }
+  .toc li a:hover { color: var(--ink); }
+  .toc li a.here { color: var(--ink); font-weight: 700; }
+  .toc li a.here::before { background: var(--c, var(--slate)); box-shadow: inset 0 0 0 3px var(--bg); }
+
+  main { padding: 34px 40px 80px 20px; min-width: 0; }
+  header.intro { margin-bottom: 26px; }
+  header.intro h1 { margin: 0 0 8px; font-size: 30px; line-height: 1.35; }
+  header.intro p { margin: 0; color: var(--ink2); max-width: 46em; }
+
+  section.ch { padding: 34px 0 10px; border-top: 1px solid var(--rule); }
+  section.ch:first-of-type { border-top: 0; }
+  .ch h2 { display: flex; align-items: center; gap: 12px; margin: 0 0 10px; font-size: 22px; line-height: 1.4; }
+  .ch h2::before { content: ""; width: 6px; height: 26px; border-radius: 3px; background: var(--c, var(--slate)); }
+  .ch > p, .ch .text > p { margin: 0 0 12px; max-width: 44em; color: var(--ink2); }
+  .ch h3 { margin: 22px 0 6px; font-size: 16px; }
+
+  figure { margin: 14px 0 6px; }
+  figure img { display: block; width: 100%; height: auto; border-radius: 10px; background: var(--paper);
+    box-shadow: 0 1px 2px rgb(16 32 26 / .08), 0 18px 40px -22px rgb(16 32 26 / .45), 0 0 0 1px rgb(23 32 28 / .08); }
+  figcaption { margin-top: 8px; font-size: 12.5px; color: var(--ink3); }
+  .pair { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+
+  ul.do { margin: 6px 0 4px; padding: 0; list-style: none; max-width: 46em; }
+  ul.do li { position: relative; padding: 4px 0 4px 22px; }
+  ul.do li::before { content: ""; position: absolute; left: 3px; top: .82em; width: 9px; height: 9px; border-radius: 50%; border: 2.5px solid var(--c, var(--slate)); }
+  kbd { display: inline-block; min-width: 20px; padding: 0 6px; margin: 0 1px; border: 1px solid #c9d1c8; border-bottom-width: 2px; border-radius: 5px; background: var(--paper);
+    font: 600 12px/20px var(--mono); color: var(--ink); text-align: center; white-space: nowrap; vertical-align: 1px; }
+  code { font: 13px var(--mono); background: var(--paper); border: 1px solid var(--rule); border-radius: 5px; padding: 1px 5px; }
+  .note { margin: 12px 0 0; padding: 10px 14px; border-radius: 8px; background: var(--paper); border: 1px solid var(--rule); font-size: 13.5px; color: var(--ink2); max-width: 46em; }
+
+  /* the overview: numbered pins on the screenshot, explained below it */
+  .callouts { position: relative; }
+  .pin { position: absolute; width: 26px; height: 26px; margin: -13px 0 0 -13px; border-radius: 50%; background: var(--focus); color: #fff;
+    display: grid; place-items: center; font: 700 13px/1 var(--jp); box-shadow: 0 0 0 3px #fff, 0 4px 10px rgb(0 0 0 / .25); }
+  ol.legend { margin: 16px 0 0; padding: 0; list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 6px 28px; counter-reset: n; max-width: 60em; }
+  ol.legend li { position: relative; padding-left: 34px; counter-increment: n; font-size: 14px; }
+  ol.legend li::before { content: counter(n); position: absolute; left: 0; top: 2px; width: 22px; height: 22px; border-radius: 50%; background: var(--focus); color: #fff;
+    display: grid; place-items: center; font: 700 12px/1 var(--jp); }
+  ol.legend b { display: block; }
+  ol.legend span { color: var(--ink2); }
+
+  /* click a picture to see it full size */
+  figure img { cursor: zoom-in; }
+  dialog.zoom { padding: 0; border: 0; background: transparent; max-width: 96vw; max-height: 94vh; }
+  dialog.zoom::backdrop { background: rgb(10 16 14 / .72); }
+  dialog.zoom img { display: block; max-width: 96vw; max-height: 94vh; border-radius: 10px; cursor: zoom-out; box-shadow: 0 30px 80px rgb(0 0 0 / .5); }
+  @media (max-width: 900px) {
+    .layout { grid-template-columns: 1fr; }
+    nav.toc { display: none; }
+    main { padding: 24px 18px 60px; }
+    .pair, ol.legend { grid-template-columns: 1fr; }
+  }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+</style>
+</head>
+<body>
+<div class="layout">
+  <nav class="toc" aria-label="目次">
+    <div class="brand"><i></i>Shiori の使い方</div>
+    <ol id="toc"></ol>
+  </nav>
+
+  <main>
+    <header class="intro">
+      <h1>Shiori の使い方</h1>
+      <p>Shiori は、ひとつの案件で使うフォルダ（共有フォルダの設計書、手元のリポジトリ、受け取った資料など）を「ワークスペース」にまとめて、いつでもすぐに開けるファイラーです。ここでは、できることを画面の写真といっしょに紹介します。写真の名前やフォルダはすべて見本です。</p>
+    </header>
+
+    <section class="ch" id="screen" style="--c: var(--slate)">
+      <h2>画面の見かた</h2>
+      <figure class="callouts">
+        <img src="img/overview.webp" alt="Shiori の画面全体。左にサイドバー、右にファイルの一覧" width="1280" height="800">
+        <span class="pin" style="left: 22%; top: 7.9%">1</span>
+        <span class="pin" style="left: 15.6%; top: 20%">2</span>
+        <span class="pin" style="left: 15.6%; top: 40.4%">3</span>
+        <span class="pin" style="left: 32.6%; top: 2.5%">4</span>
+        <span class="pin" style="left: 61.7%; top: 7.3%">5</span>
+        <span class="pin" style="left: 85.2%; top: 11%">6</span>
+        <span class="pin" style="left: 80.8%; top: 13.3%">7</span>
+        <span class="pin" style="left: 58.6%; top: 19%">8</span>
+        <span class="pin" style="left: 46.9%; top: 70%">9</span>
+        <span class="pin" style="left: 6.5%; top: 98%">10</span>
+      </figure>
+      <ol class="legend">
+        <li><b>ワークスペースへ移動</b><span>名前の一部で探して開きます（<kbd>Ctrl</kbd>+<kbd>K</kbd>）。</span></li>
+        <li><b>ピン留め・PC</b><span>よく使うフォルダと、ドライブの一覧。</span></li>
+        <li><b>ワークスペース</b><span>案件ごとのフォルダのまとまり。色と略称で見分けます。</span></li>
+        <li><b>タブ</b><span>ワークスペースごとに、開いていたタブを覚えています。</span></li>
+        <li><b>パスのバー</b><span>今いる場所。クリックすると、その階層へ移動します。</span></li>
+        <li><b>ツールバー</b><span>パスのコピー、検索、容量、詳細、左右の分割。</span></li>
+        <li><b>登録したフォルダ</b><span>ワークスペースに登録した「ホーム」「設計書」「repo」など。</span></li>
+        <li><b>種類で絞り込み</b><span>フォルダ・Excel・Word などで一覧を絞ります。</span></li>
+        <li><b>ファイルの一覧</b><span>ダブルクリックか <kbd>Enter</kbd> で開きます。</span></li>
+        <li><b>設定・Shiori について</b><span>歯車が設定、ⓘ がバージョンとショートカットの一覧。</span></li>
+      </ol>
+    </section>
+
+    <section class="ch" id="workspace" style="--c: var(--green)">
+      <h2>ワークスペース</h2>
+      <p>ひとつの案件で使うフォルダを、場所がばらばらでもひとつにまとめます。「顧客 › 案件 › 作業」のように、いくつでも入れ子にできます。</p>
+      <figure>
+        <img src="img/workspace.webp" alt="ワークスペースを開いたところ。登録したフォルダのボタンが並び、左右にフォルダが表示されている" width="1280" height="800" loading="lazy">
+        <figcaption>ワークスペースを開くと、登録したフォルダ（ホーム・設計書・repo）がボタンで並びます。</figcaption>
+      </figure>
+      <ul class="do">
+        <li><b>作る:</b> フォルダを開いて、サイドバーの「ワークスペース」の <b>＋</b>（<kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>N</kbd>）。</li>
+        <li><b>フォルダを登録:</b> 見出しの「フォルダを登録」で、別の場所のフォルダ（共有フォルダ、別のドライブなど）も追加できます。</li>
+        <li><b>まとめて取り込む:</b> <code>顧客\案件</code> のような今のフォルダ構成から、ワークスペースをまとめて作れます（「ワークスペース」の取り込みボタン）。</li>
+        <li><b>並べ替え:</b> サイドバーでドラッグ。右クリックで名前の変更・色・略称（HKB など）の編集。</li>
+        <li><b>上から順に開く:</b> <kbd>Ctrl</kbd>+<kbd>1</kbd>〜<kbd>9</kbd>。</li>
+        <li><b>外す:</b> 右クリック →「Shiori から外す」。<b>フォルダそのものは消えません。</b></li>
+        <li>接続できないフォルダ（VPN が切れている共有フォルダなど）には「未接続」と出ます。</li>
+      </ul>
+      <h3>名前で探して開く</h3>
+      <div class="pair">
+        <figure>
+          <img src="img/switcher.webp" alt="ワークスペースへ移動の検索窓に名前を入れて、候補が出ているところ" width="1280" height="800" loading="lazy">
+          <figcaption><kbd>Ctrl</kbd>+<kbd>K</kbd>: 名前の一部・よみ・ローマ字で探せます。</figcaption>
+        </figure>
+        <figure>
+          <img src="img/ws-folded.webp" alt="サイドバーのワークスペースの一覧を折りたたんだところ" width="1280" height="800" loading="lazy">
+          <figcaption><kbd>Ctrl</kbd>+<kbd>B</kbd>: 一覧を折りたたみます。画面共有のとき、ほかのお客様の名前を隠せます。</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="ch" id="tabs" style="--c: var(--green)">
+      <h2>タブと左右の分割</h2>
+      <p>タブと左右の分割は、ワークスペースごとに覚えています。別の案件に切り替えると、その案件で開いていたタブに戻ります。アプリを閉じて開き直しても、ウィンドウの位置や大きさも含めてそのままです。</p>
+      <div class="pair">
+        <figure>
+          <img src="img/tabs.webp" alt="ワークスペースを切り替えて戻ると、前に開いていたタブがそのまま残っているところ" width="1280" height="800" loading="lazy">
+          <figcaption>案件を行き来しても、それぞれのタブがそのまま。</figcaption>
+        </figure>
+        <figure>
+          <img src="img/split.webp" alt="左右に分割して、2 つのフォルダを並べたところ" width="1280" height="800" loading="lazy">
+          <figcaption><kbd>Ctrl</kbd>+<kbd>\</kbd>: 左右に分割。</figcaption>
+        </figure>
+      </div>
+      <ul class="do">
+        <li>新しいタブ <kbd>Ctrl</kbd>+<kbd>T</kbd>、閉じる <kbd>Ctrl</kbd>+<kbd>W</kbd>、閉じたタブを戻す <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>T</kbd>。</li>
+        <li>左右の行き来は <kbd>F6</kbd> か <kbd>Tab</kbd>、入れ替えは <kbd>Ctrl</kbd>+<kbd>U</kbd>。</li>
+        <li>ファイルを反対側へドラッグするとコピー・移動。ドラッグ中は、登録したフォルダやピン留めも置き場所になります。</li>
+        <li>タブを反対側へドラッグすると、そちらで開きます。</li>
+      </ul>
+    </section>
+
+    <section class="ch" id="move" style="--c: var(--orange)">
+      <h2>フォルダを移動する</h2>
+      <p>アドレス欄（<kbd>Ctrl</kbd>+<kbd>L</kbd>）には、パスだけでなく、ワークスペースの名前やファイル名、操作の名前も入力できます。</p>
+      <figure>
+        <img src="img/omnibar.webp" alt="アドレス欄に「設計」と入力して、ワークスペース・ファイル・検索の候補が出ているところ" width="1280" height="800" loading="lazy">
+        <figcaption>「設計」と入力したところ。ワークスペース、今の案件のファイル、検索の候補が出ます。</figcaption>
+      </figure>
+      <ul class="do">
+        <li>戻る <kbd>Alt</kbd>+<kbd>←</kbd>、進む <kbd>Alt</kbd>+<kbd>→</kbd>、上の階層へ <kbd>Alt</kbd>+<kbd>↑</kbd> または <kbd>Backspace</kbd>。</li>
+        <li>パスのバーの各部分をクリックすると、その階層へ。長いパスで「…」になっている部分も、押すと一覧が出ます。</li>
+        <li>一覧で文字を打つと、その名前で始まるファイルへカーソルが移ります（エクスプローラーと同じ）。</li>
+        <li>よく使うフォルダは、右クリックの「ピン留め」でサイドバーに並べられます。</li>
+        <li>ZIP・7z などの圧縮ファイルは、ダブルクリックでフォルダのように中へ入れます（7z・rar は 7-Zip が必要）。</li>
+      </ul>
+    </section>
+
+    <section class="ch" id="search" style="--c: var(--orange)">
+      <h2>検索</h2>
+      <p><kbd>Ctrl</kbd>+<kbd>F</kbd> で、今のフォルダの下を探します。ファイル名は打つそばから見つかり、<kbd>Tab</kbd> を押すとファイルの中身の検索に切り替わります。</p>
+      <div class="pair">
+        <figure>
+          <img src="img/search-name.webp" alt="ファイル名で検索した結果の一覧" width="1280" height="800" loading="lazy">
+          <figcaption>ファイル名で探す。</figcaption>
+        </figure>
+        <figure>
+          <img src="img/search-content.webp" alt="Excel や Word の中身で検索して、見つかった箇所が表示されているところ" width="1280" height="800" loading="lazy">
+          <figcaption>中身で探す: Excel のセルや図形、Word、PowerPoint、テキスト、ソースコードの中まで。見つかった箇所も表示します。</figcaption>
+        </figure>
+      </div>
+      <ul class="do">
+        <li>今のフォルダの中だけを名前で絞るときは <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>F</kbd>。</li>
+        <li>一覧の上の「Excel」「Word」などのボタンで、種類ごとに絞れます。</li>
+      </ul>
+    </section>
+
+    <section class="ch" id="preview" style="--c: var(--blue)">
+      <h2>プレビューと詳細</h2>
+      <p>ファイルを選んで <kbd>Space</kbd> を押すと、開かずに中身を確認できます。<kbd>↑</kbd><kbd>↓</kbd> で次のファイルへ、<kbd>Enter</kbd> でそのまま開きます。</p>
+      <div class="pair">
+        <figure>
+          <img src="img/preview.webp" alt="Excel のファイルを Space キーでプレビューしているところ" width="1280" height="800" loading="lazy">
+          <figcaption>Excel・Word・PowerPoint・画像・Markdown・ソースコードをその場で表示。</figcaption>
+        </figure>
+        <figure>
+          <img src="img/inspector.webp" alt="右側の詳細に、表の中身、作成者、最終更新者などが出ているところ" width="1280" height="800" loading="lazy">
+          <figcaption>詳細（<kbd>Alt</kbd>+<kbd>Shift</kbd>+<kbd>P</kbd>）: 中身の一部、作成者・最終更新者、ダウンロード元、同じファイルの別の版など。</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="ch" id="files" style="--c: var(--blue)">
+      <h2>ファイルの操作</h2>
+      <figure>
+        <img src="img/contextmenu.webp" alt="ファイルの右クリックメニュー。パスのコピー、日付を付けて複製、7-Zip などが並んでいる" width="1280" height="800" loading="lazy">
+        <figcaption>右クリックメニュー。Windows のメニューのよく使う項目（7-Zip、TortoiseGit など）も直接並べられます（設定 →「右クリックメニュー」）。</figcaption>
+      </figure>
+      <ul class="do">
+        <li><b>コピー・移動:</b> <kbd>Ctrl</kbd>+<kbd>C</kbd>・<kbd>Ctrl</kbd>+<kbd>X</kbd>・<kbd>Ctrl</kbd>+<kbd>V</kbd> とドラッグ。大きなコピーは順番に処理し、進み具合を下に表示します。同じ名前があるときは、どうするか聞きます。</li>
+        <li><b>元に戻す:</b> <kbd>Ctrl</kbd>+<kbd>Z</kbd>。名前の変更・移動・コピーに加えて、ごみ箱に入れた削除も元の場所に戻せます。</li>
+        <li><b>日付を付けて複製:</b> 「画面設計書_20261114.xlsx」のように、今日の日付を付けてコピーします。</li>
+        <li><b>パスのコピー:</b> <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>C</kbd>。ツールバーの「パス」から、UNC のパスなど別の形でもコピーできます。</li>
+        <li><b>比較:</b> 2 つ選んで右クリック →「比較」で WinMerge を開きます（ファイル同士・フォルダ同士）。</li>
+        <li><b>開く:</b> ターミナル（<kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>T</kbd>）、エディタ（<kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>E</kbd>）で今の場所を開けます。</li>
+        <li>OneDrive・SharePoint のフォルダでは、「クラウドのみ」「この PC にある」などの状態を表示します。</li>
+      </ul>
+    </section>
+
+    <section class="ch" id="template" style="--c: var(--purple)">
+      <h2>テンプレート</h2>
+      <p>「01_要件定義」「02_基本設計」…のような案件フォルダのひな形を、フォルダ構成ごとテンプレートにできます。新しい案件は、名前を付けるだけで同じ構成のフォルダができます。</p>
+      <div class="pair">
+        <figure>
+          <img src="img/template.webp" alt="テンプレートから新しいフォルダを作るダイアログで、テンプレートと名前を選んでいるところ" width="1280" height="800" loading="lazy">
+          <figcaption>右クリック →「テンプレートから新しいフォルダを作る」。</figcaption>
+        </figure>
+        <figure>
+          <img src="img/template-done.webp" alt="テンプレートと同じフォルダ構成で新しいフォルダができたところ" width="1280" height="800" loading="lazy">
+          <figcaption>中のフォルダもファイルも、そのままコピーされます。<kbd>Ctrl</kbd>+<kbd>Z</kbd> で取り消せます。</figcaption>
+        </figure>
+      </div>
+      <p class="note">テンプレートにしたいフォルダを右クリックして「テンプレートとして登録」するか、設定 →「ファイル操作」で追加します。</p>
+    </section>
+
+    <section class="ch" id="git" style="--c: var(--purple)">
+      <h2>Git の状態</h2>
+      <p>Git のリポジトリを開くと、パスのバーの右にブランチ名と、まだコミットしていない変更の数が出ます。数えるのは今開いているフォルダの中だけです。押すと、変更のあるファイルの一覧が出ます。</p>
+      <figure>
+        <img src="img/git.webp" alt="ブランチ名と変更の数のボタンを押して、変更のあるファイルの一覧が出ているところ" width="1280" height="800" loading="lazy">
+        <figcaption>読み取りだけで、fetch や pull などはしません。一覧の変更のあるファイルにも印が付きます。</figcaption>
+      </figure>
+    </section>
+
+    <section class="ch" id="disk" style="--c: var(--slate)">
+      <h2>空き容量のチェック</h2>
+      <p>ツールバーの「容量」（<kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>D</kbd>）で、ドライブの空きと、どのフォルダが場所を取っているかを大きい順に表示します。別のウィンドウで開くので、調べながら作業を続けられます。</p>
+      <figure>
+        <img src="img/disk.webp" alt="フォルダごとの大きさが棒グラフで大きい順に並んでいる容量のウィンドウ" width="1280" height="800" loading="lazy">
+        <figcaption>フォルダを押すと中へ。大きいファイルの一覧や、node_modules のような作り直せるフォルダの印もあります。</figcaption>
+      </figure>
+    </section>
+
+    <section class="ch" id="keys" style="--c: var(--slate)">
+      <h2>コマンドパレットとショートカット</h2>
+      <p>やりたいことの名前で操作を探せるのが、コマンドパレット（<kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>P</kbd>）です。ショートカットキーの一覧は、サイドバーの下の ⓘ（Shiori について）で見られます。</p>
+      <div class="pair">
+        <figure>
+          <img src="img/palette.webp" alt="コマンドパレットで操作の一覧とショートカットキーが並んでいるところ" width="1280" height="800" loading="lazy">
+          <figcaption>コマンドパレット。</figcaption>
+        </figure>
+        <figure>
+          <img src="img/shortcuts.webp" alt="Shiori について の画面で、ショートカットキーの一覧が分類ごとに並んでいるところ" width="1280" height="800" loading="lazy">
+          <figcaption>Shiori について → ショートカットキー。上の欄で絞り込めます。</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="ch" id="settings" style="--c: var(--slate)">
+      <h2>設定と更新</h2>
+      <div class="pair">
+        <figure>
+          <img src="img/settings.webp" alt="設定画面。左に見た目・連携するアプリなどの項目が並んでいる" width="1280" height="800" loading="lazy">
+          <figcaption>設定（サイドバーの下の歯車）: 配色、ターミナル・エディタ・比較ツール、右クリックメニュー、テンプレート、更新の確認。</figcaption>
+        </figure>
+        <figure>
+          <img src="img/update.webp" alt="画面の上に、新しいバージョンがあることを知らせるバーが出ているところ" width="1280" height="800" loading="lazy">
+          <figcaption>新しいバージョンがあると、起動したときに上に知らせが出ます。「今すぐ更新」で、そのまま更新して開き直します。</figcaption>
+        </figure>
+      </div>
+      <ul class="do">
+        <li>配色は 4 つ（昼・夜行・常磐・墨）。選ぶとすぐに反映されます。</li>
+        <li>起動時の更新の確認は、設定 →「更新」でオフにできます。Shiori がインターネットに接続するのは、この確認と更新のときだけです。</li>
+        <li>ワークスペースと設定は <code>%APPDATA%\jp.shiori.app\</code> にテキストファイル（TOML）で保存されます。</li>
+      </ul>
+    </section>
+  </main>
+</div>
+
+<dialog class="zoom" id="zoom" aria-label="拡大した画像"><img alt=""></dialog>
+<script>
+  // a picture opens full size; a click or Esc closes it
+  (() => {
+    const dlg = document.getElementById("zoom");
+    const big = dlg.querySelector("img");
+    document.querySelectorAll("figure img").forEach((img) => img.addEventListener("click", () => {
+      big.src = img.src;
+      big.alt = img.alt;
+      dlg.showModal();
+    }));
+    dlg.addEventListener("click", () => dlg.close());
+  })();
+  // the table of contents is built from the chapters; the one being read is lit up
+  (() => {
+    const toc = document.getElementById("toc");
+    const chapters = [...document.querySelectorAll("section.ch")];
+    const links = chapters.map((s) => {
+      const li = document.createElement("li");
+      const a = document.createElement("a");
+      a.href = "#" + s.id;
+      a.textContent = s.querySelector("h2").textContent;
+      a.style.setProperty("--c", getComputedStyle(s).getPropertyValue("--c"));
+      li.append(a);
+      toc.append(li);
+      return a;
+    });
+    const update = () => {
+      let here = 0;
+      chapters.forEach((s, i) => { if (s.getBoundingClientRect().top < innerHeight * 0.35) here = i; });
+      if (innerHeight + scrollY >= document.documentElement.scrollHeight - 4) here = chapters.length - 1;
+      links.forEach((a, i) => a.classList.toggle("here", i === here));
+    };
+    addEventListener("scroll", update, { passive: true });
+    update();
+  })();
+</script>
+</body>
+</html>
