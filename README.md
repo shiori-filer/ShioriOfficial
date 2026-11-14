@@ -93,14 +93,13 @@ Issues は誰でも見られるため、個人情報や社内の情報（実際�
 
 ## このリポジトリについて
 
-公式サイト（GitHub Pages）とインストーラーを置いています。
+公式サイト（GitHub Pages）とインストーラーを置いています。`main` に push すると、数分でサイトに反映されます。
 
 | 場所 | 中身 |
 |---|---|
 | `index.html`、`terms.html`、`privacy.html`、`style.css`、`*.js` | 公式サイト |
 | `media/` | サイトの動画と画像（デモ用の架空のデータで撮影しています） |
 | `download/` | インストーラー |
-| `.github/workflows/pages.yml` | `main` に push すると、サイトを GitHub Pages に公開します |
 
 ---
 
