@@ -1,11 +1,11 @@
 {
-  "version": "0.1.4",
-  "notes": "- ほかのアプリへのドラッグを対応",
-  "pub_date": "2026-11-14T12:13:43Z",
+  "version": "0.1.5",
+  "notes": "- プレビューから Git の差分を表示可能\r\n- Git のログ表示をTortoiseGit の仕様に合わせて調整",
+  "pub_date": "2026-11-14T14:19:29Z",
   "platforms": {
     "windows-x86_64": {
-      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTMUR6cnBJK200b3EwNkRpanJPTlZzMmEvTjBGeWVmRVZacDg1YUtjeURNTlQ2VUhGdlFkblhlMUhnMHMwUGtqMnc0eGUrdFk3SGlJbW9oVUo3ZEsvdG1ZL29Ta2Q0SkFNPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzk0NjU4NDIzCWZpbGU6U2hpb3JpXzAuMS40X3g2NC1zZXR1cC5leGUJdmVyc2lvbjowLjEuNApoOU9BT2YvMlBOb1NEdGRSak1xYU50algvak5qT29FeEhxQjRxV2RWbE53Vkppd3pPVlV4by85N3dvWXVVYTFwazJqRHJzeVJSQTNodytyTnd0b01EUT09Cg==",
-      "url": "https://shiori-filer.github.io/ShioriOfficial/download/Shiori_0.1.4_x64-setup.exe"
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTMUR6cnBJK200b21qL2VnUG53RXoyc200RStrMjltWHNFdG16UU45blVlWmIvNk91SEFMaG5BSUtwSG4ya3BhYTZRTk5YcDA2NExWUmE0ZEhoMElRQTBjU3pKN1UvL2cwPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzk0NjY1OTY4CWZpbGU6U2hpb3JpXzAuMS41X3g2NC1zZXR1cC5leGUJdmVyc2lvbjowLjEuNQpSQ0h6TEJXQUdkVGRqNnNmTlV3ZGlOcjFab3JRRy9qU0kxV1V4VFhIT0Q3c04xTUhwQWEySXA5YWlYVU9FbUJXSkl5Q3dBL0wwTW0zaHRNdkRKVC9BZz09Cg==",
+      "url": "https://shiori-filer.github.io/ShioriOfficial/download/Shiori_0.1.5_x64-setup.exe"
     }
   }
 }
