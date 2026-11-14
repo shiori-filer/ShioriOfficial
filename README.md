@@ -12,7 +12,7 @@
 <p align="center">
   <a href="https://shiori-filer.github.io/ShioriOfficial/"><b>公式サイト</b></a>
   ・
-  <a href="https://shiori-filer.github.io/ShioriOfficial/download/Shiori_0.1.0_x64-setup.exe"><b>ダウンロード（v0.1.0）</b></a>
+  <a href="https://shiori-filer.github.io/ShioriOfficial/download/Shiori_0.1.1_x64-setup.exe"><b>ダウンロード（v0.1.1）</b></a>
 </p>
 
 <p align="center">
@@ -45,7 +45,7 @@ Shiori は、ひとつの案件のフォルダを「ワークスペース」に�
 
 ## インストール
 
-1. [Shiori_0.1.0_x64-setup.exe](https://shiori-filer.github.io/ShioriOfficial/download/Shiori_0.1.0_x64-setup.exe) をダウンロードして実行します。
+1. [Shiori_0.1.1_x64-setup.exe](https://shiori-filer.github.io/ShioriOfficial/download/Shiori_0.1.1_x64-setup.exe) をダウンロードして実行します。
 2. 使用許諾契約に同意すると、インストールが始まります。管理者の権限は要りません（今のユーザーにだけインストールされます）。
 3. 新しいバージョンが出ると、起動したときに画面の上に知らせが出ます。「今すぐ更新」を押すと、そのまま更新して開き直します。
 

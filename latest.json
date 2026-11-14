@@ -1,11 +1,11 @@
 {
-  "version": "0.1.0",
-  "notes": "最初の公開版です。",
-  "pub_date": "2026-11-14T07:41:23Z",
+  "version": "0.1.1",
+  "notes": "更新の仕組みを確かめるための版です。機能の変更はありません。",
+  "pub_date": "2026-11-14T08:08:36Z",
   "platforms": {
     "windows-x86_64": {
-      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTMUR6cnBJK200b21rbmQ2cGRZV0RFMjFVWExGN3ZaM2xObjRqN0hIZmRHLzVXT2hXdEpqK0lGTGd6SDI3M2R2dlhtcHlMZzlkSHZ2K1Nqbis2UlE3cTl0V1pLQ2tENFFZPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzk0NjQyMDc3CWZpbGU6U2hpb3JpXzAuMS4wX3g2NC1zZXR1cC5leGUJdmVyc2lvbjowLjEuMAovS0xzM0FxTzhQOTRrTXl0WVhTT2Y0blQvS0gwNDZpekVtU3pBREpzNTl6aXlTRFJCdXVDU2xwbzFlOWZFbVJHMERhMTNuNVY5R0VVdzlSMklXZGtBdz09Cg==",
-      "url": "https://shiori-filer.github.io/ShioriOfficial/download/Shiori_0.1.0_x64-setup.exe"
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTMUR6cnBJK200b2pGRVZnbkZ6V1RFcWFiemQwSEZ6QjNOY2RwUkhXZjRIV3ZwRFZNb2c2U2xhN2hmdnc2U011b1YxclRXVnJZN0kxUXpBRksyTlhucHNid2krWFVwVndjPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzk0NjQzNzE1CWZpbGU6U2hpb3JpXzAuMS4xX3g2NC1zZXR1cC5leGUJdmVyc2lvbjowLjEuMQo5ek54NTVxUEhZRmhkdWd6L0tzVTVYSDdWck5nNG96V2RWTkxKcHVZeXpzTkZYbUNxdXNrSlF2WDQ3TkJFNlNWT0wvWSt5Zkw5SnBFMllCOGhBblRBdz09Cg==",
+      "url": "https://shiori-filer.github.io/ShioriOfficial/download/Shiori_0.1.1_x64-setup.exe"
     }
   }
 }
