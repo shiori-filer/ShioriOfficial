@@ -1,11 +1,11 @@
 {
-  "version": "0.1.5",
-  "notes": "- プレビューから Git の差分を表示可能\r\n- Git のログ表示をTortoiseGit の仕様に合わせて調整",
-  "pub_date": "2026-11-14T14:19:29Z",
+  "version": "0.2.0",
+  "notes": "- ログビューアーの追加\r\n- 設定からフォントを変更可能\r\n- 各機能の速度改善",
+  "pub_date": "2026-11-15T10:10:16Z",
   "platforms": {
     "windows-x86_64": {
-      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTMUR6cnBJK200b21qL2VnUG53RXoyc200RStrMjltWHNFdG16UU45blVlWmIvNk91SEFMaG5BSUtwSG4ya3BhYTZRTk5YcDA2NExWUmE0ZEhoMElRQTBjU3pKN1UvL2cwPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzk0NjY1OTY4CWZpbGU6U2hpb3JpXzAuMS41X3g2NC1zZXR1cC5leGUJdmVyc2lvbjowLjEuNQpSQ0h6TEJXQUdkVGRqNnNmTlV3ZGlOcjFab3JRRy9qU0kxV1V4VFhIT0Q3c04xTUhwQWEySXA5YWlYVU9FbUJXSkl5Q3dBL0wwTW0zaHRNdkRKVC9BZz09Cg==",
-      "url": "https://shiori-filer.github.io/ShioriOfficial/download/Shiori_0.1.5_x64-setup.exe"
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTMUR6cnBJK200b3VBQXdFc3JDdWJZalFLOVRkK3ZodFExZmhnN2tLaE82Yyt2amRSNnQrOENkOG1EM1ViKzJmaEJsN2ZPbE1KOVZlYlpRUTBYTCtFb21RcEZCM1hMSUFNPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzk0NzM3NDE2CWZpbGU6U2hpb3JpXzAuMi4wX3g2NC1zZXR1cC5leGUJdmVyc2lvbjowLjIuMApseFJYVDdGeDFmTHk4djdRQXJ3SHNySGFXYzY1VzhCZzg4VG50cmw4ZG9Hc3hEV0hqZFFjbHEreWFySjJzdEVqVDVPb1lTTkd1Mi8rREVxZTFFVllEUT09Cg==",
+      "url": "https://shiori-filer.github.io/ShioriOfficial/download/Shiori_0.2.0_x64-setup.exe"
     }
   }
 }

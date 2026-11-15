@@ -77,5 +77,42 @@
       else v.pause();
     }
   }, { threshold: 0.3 });
-  document.querySelectorAll(".feature video").forEach((v) => io.observe(v));
+  document.querySelectorAll(".feature video, .vs video").forEach((v) => io.observe(v));
+})();
+
+// the race against Sakura Editor's Grep: the measured times, played in real time on one
+// scale. Shiori's lane is done before Sakura's has started to move.
+(() => {
+  const race = document.querySelector(".race");
+  if (!race) return;
+  const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const DATA = { word: [2.25, 0.0063], regex: [1.69, 0.0066], or: [1.96, 0.006] };
+  const sak = race.querySelector(".lane.sakura"), shi = race.querySelector(".lane.shiori"), x = race.querySelector(".x");
+  const tabs = [...race.querySelectorAll(".race-tabs button")];
+  const fmt = (s) => (s >= 1 ? s.toFixed(2) + " 秒" : (s * 1000).toFixed(1) + " ms");
+  const set = (lane, f, t) => { lane.querySelector(".track i").style.setProperty("--f", f); lane.querySelector(".t").textContent = t == null ? "—" : fmt(t); };
+  let key = "word", raf = 0, timer = 0;
+  function run() {
+    cancelAnimationFrame(raf); clearTimeout(timer);
+    const [ts, tm] = DATA[key];
+    race.classList.remove("finished"); shi.classList.remove("done");
+    x.textContent = "約 " + Math.round(ts / tm / 10) * 10 + " 倍";
+    set(sak, 0, 0); set(shi, 0, null);
+    const shiOn = () => { set(shi, Math.max(0.004, tm / ts), tm); shi.classList.add("done"); };
+    if (reduce) { set(sak, 1, ts); shiOn(); race.classList.add("finished"); return; }
+    const t0 = performance.now();
+    timer = setTimeout(shiOn, Math.max(16, tm * 1000));
+    const step = (now) => {
+      const e = (now - t0) / 1000, f = Math.min(1, e / ts);
+      set(sak, f, Math.min(e, ts));
+      if (f < 1) raf = requestAnimationFrame(step); else race.classList.add("finished");
+    };
+    raf = requestAnimationFrame(step);
+  }
+  tabs.forEach((b) => b.addEventListener("click", () => { key = b.dataset.k; tabs.forEach((t) => t.setAttribute("aria-selected", String(t === b))); run(); }));
+  race.querySelector(".again").addEventListener("click", run);
+  new IntersectionObserver(([e], o) => { if (e.isIntersecting) { o.disconnect(); run(); } }, { threshold: 0.6 }).observe(race);
+  // the ten changes fill in when they come into view
+  const ten = document.querySelector(".ten");
+  if (ten) new IntersectionObserver(([e], o) => { if (e.isIntersecting) { o.disconnect(); ten.classList.add("go"); } }, { threshold: 0.5 }).observe(ten);
 })();

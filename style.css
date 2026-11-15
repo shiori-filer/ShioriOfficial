@@ -350,3 +350,156 @@ h1, h2, h3 { word-break: auto-phrase; }
   .win { transform: none; }
   .nb { transition: none; }
 }
+
+/* ---------------------------------------------------------------- measured: the log viewer against Sakura Editor */
+.vs { padding-top: 40px; padding-bottom: 120px; }
+.vs .nb { top: 40px; }
+.vs h2 { margin: 6px 0 12px; font: 900 clamp(25px, 2.7vw, 36px)/1.4 var(--jp); }
+.vs h3 { margin: 0 0 18px; font: 900 clamp(20px, 2vw, 25px)/1.4 var(--jp); }
+.vs-body { max-width: 1080px; }
+.vs-lead { margin: 0 0 30px; color: var(--ink2); max-width: 44em; }
+.num { font-variant-numeric: tabular-nums; }
+
+/* the race: one lane each, on one time scale */
+.race { padding: 22px clamp(18px, 3vw, 32px) 18px; border-radius: 18px; background: var(--paper); border: 1px solid var(--track); }
+.race-head { display: flex; align-items: center; gap: 12px; margin-bottom: 18px; flex-wrap: wrap; }
+.race-tabs { display: flex; gap: 6px; flex-wrap: wrap; }
+.race-tabs button { font: 700 14px/1.3 var(--jp); padding: 8px 14px; border-radius: 12px; border: 1.5px solid var(--track); background: var(--paper); color: var(--ink2); cursor: pointer; text-align: left; }
+.race-tabs button small { display: block; font: 600 11.5px/1.4 var(--sign); letter-spacing: .02em; color: var(--ink3); }
+.race-tabs button[aria-selected="true"] { border-color: var(--c); color: var(--ink); background: color-mix(in srgb, var(--c) 6%, var(--paper)); }
+.again { margin-left: auto; font: 700 13px/1 var(--jp); padding: 10px 16px; border-radius: 999px; border: 1.5px solid var(--ink); background: transparent; cursor: pointer; }
+.again:hover { background: var(--ink); color: #fff; }
+.lane { display: grid; grid-template-columns: 150px minmax(0, 1fr) 110px; gap: 16px; align-items: center; padding: 10px 0; }
+.lane + .lane { border-top: 1px dashed var(--track); }
+.lane .who { font: 700 15px/1.3 var(--jp); }
+.lane .who small { display: block; font: 500 12px/1.5 var(--jp); color: var(--ink3); }
+.lane .track { position: relative; height: 18px; border-radius: 9px; background: var(--bg); overflow: hidden; }
+.lane .track i { position: absolute; left: 0; top: 0; bottom: 0; width: calc(var(--f, 0) * 100%); border-radius: 9px; }
+.lane.sakura .track i { background: repeating-linear-gradient(-45deg, #8c9691 0 8px, #9aa49f 8px 16px); }
+.lane.shiori .track i { background: var(--c); }
+.lane .t { font: 800 22px/1 var(--sign); text-align: right; letter-spacing: -.01em; }
+.lane.sakura .t { color: var(--ink2); }
+.lane.shiori .t { color: var(--c); }
+.lane.shiori.done .track i { animation: flash .6s ease-out; }
+@keyframes flash { from { box-shadow: 0 0 0 0 color-mix(in srgb, var(--c) 60%, transparent); } to { box-shadow: 0 0 0 14px transparent; } }
+.race-result { display: flex; align-items: baseline; gap: 12px; margin: 14px 0 0; min-height: 48px; opacity: 0; transform: translateY(6px); transition: opacity .4s, transform .5s cubic-bezier(.16, 1, .3, 1); }
+.race.finished .race-result { opacity: 1; transform: none; }
+.race-result .x { font: 800 40px/1 var(--sign); color: var(--c); letter-spacing: -.02em; white-space: nowrap; }
+.race-result span { color: var(--ink2); font-weight: 700; }
+
+/* the three numbers */
+.xs { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; margin: 34px 0 0; border-top: 2px solid var(--ink); }
+.xs > div { padding: 18px 20px 4px 0; }
+.xs > div + div { padding-left: 24px; border-left: 1px solid var(--track); }
+.xs dt { font: 700 14px/1.5 var(--jp); color: var(--ink2); }
+.xs dd { margin: 4px 0 0; }
+.xs b { display: block; font: 800 clamp(44px, 6vw, 72px)/1 var(--sign); letter-spacing: -.03em; color: var(--ink); }
+.xs b i { font-style: normal; font-size: .5em; margin-left: 4px; color: var(--c); }
+.xs dd span { display: block; margin-top: 8px; font: 600 14px/1.5 var(--sign); color: var(--ink3); }
+
+/* ten changes of the condition: two timelines on one scale (22.5 s) */
+.ten { margin: 56px 0 0; }
+.ten figcaption { margin-bottom: 18px; color: var(--ink2); }
+.ten figcaption b { display: block; font: 900 clamp(20px, 2vw, 25px)/1.4 var(--jp); color: var(--ink); margin-bottom: 4px; }
+.tl { display: grid; grid-template-columns: 150px minmax(0, 1fr) 90px; gap: 16px; align-items: center; padding: 8px 0; }
+.tl .who { font: 700 15px/1.3 var(--jp); }
+.tl b { font: 800 22px/1 var(--sign); text-align: right; }
+.tl.shiori b { color: var(--c); }
+.tl .bar { position: relative; display: flex; height: 26px; }
+.tl.sakura .bar i { flex: 0 0 10%; border-right: 2px solid var(--bg); background: #9aa49f; transform-origin: left; transform: scaleX(0); }
+.tl.shiori .bar .load { flex: 0 0 5.33%; background: color-mix(in srgb, var(--c) 45%, var(--paper)); transform-origin: left; transform: scaleX(0); }
+.tl.shiori .bar .tick { flex: 0 0 3px; margin-left: 1px; background: var(--c); transform: scaleY(0); }
+.ten.go .tl.sakura .bar i { animation: grow .35s cubic-bezier(.3, .7, .2, 1) forwards; animation-delay: calc(var(--i) * .22s); }
+.ten.go .tl.shiori .bar .load { animation: grow .3s cubic-bezier(.3, .7, .2, 1) forwards; }
+.ten.go .tl.shiori .bar .tick { animation: pop .2s ease-out forwards; animation-delay: calc(.3s + var(--i) * .05s); }
+@keyframes grow { to { transform: scaleX(1); } }
+@keyframes pop { to { transform: scaleY(1); } }
+.tl-note { margin: 14px 0 0; color: var(--ink2); }
+.tl-note b { color: var(--c); }
+
+/* why: one reader against many, read once */
+.why { margin-top: 64px; }
+.why-pair { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(20px, 3vw, 40px); }
+.how { margin: 0; }
+.how .doc { position: relative; height: 150px; border-radius: 14px; background: repeating-linear-gradient(to bottom, var(--paper) 0 13px, var(--bg) 13px 15px); border: 1px solid var(--track); overflow: hidden; }
+.how .scan { position: absolute; left: 0; right: 0; height: 3px; top: 0; background: #8c9691; box-shadow: 0 0 12px #8c9691; }
+.how.shiori .scan { background: var(--c); box-shadow: 0 0 12px var(--c); }
+.how figcaption { margin-top: 14px; color: var(--ink2); font-size: 15px; line-height: 1.8; }
+.how figcaption b { display: block; color: var(--ink); font-size: 16px; }
+@media (prefers-reduced-motion: no-preference) {
+  .vs.seen .how.sakura .scan { animation: sweep 2.25s linear infinite; }
+  .vs.seen .how.shiori .scan { animation: lanes 2.25s ease-in-out infinite; }
+}
+.how.shiori .c1 { top: 0; } .how.shiori .c2 { top: 25px; } .how.shiori .c3 { top: 50px; }
+.how.shiori .c4 { top: 75px; } .how.shiori .c5 { top: 100px; } .how.shiori .c6 { top: 125px; }
+@keyframes sweep { from { top: 0; } to { top: 100%; } }
+/* every core reads its own part at the same moment, done long before the single reader */
+@keyframes lanes { 0% { transform: translateY(0); opacity: 1; } 14% { transform: translateY(22px); opacity: 1; } 18%, 100% { transform: translateY(22px); opacity: 0; } }
+.how.shiori .doc::after { content: "完了"; position: absolute; right: 12px; bottom: 10px; font: 700 13px/1 var(--jp); color: var(--c); opacity: 0; }
+.vs.seen .how.shiori .doc::after { animation: done 2.25s steps(1) infinite; }
+@keyframes done { 0% { opacity: 0; } 16% { opacity: 1; } }
+.reasons { list-style: none; counter-reset: r; margin: 34px 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 30px; }
+.reasons li { counter-increment: r; position: relative; padding-top: 16px; border-top: 3px solid var(--c); color: var(--ink2); font-size: 15px; line-height: 1.8; }
+.reasons b { display: block; color: var(--ink); font-size: 17px; margin-bottom: 4px; }
+
+.vs-table { margin-top: 56px; }
+.vs-table .cmp tbody th { width: 24%; }
+.vs-table .cmp td { width: 38%; }
+@media (max-width: 640px) {
+  .vs-table .cmp td.me::before { content: "Shiori"; }
+  .vs-table .cmp td:not(.me)::before { content: "サクラエディタ"; }
+}
+.method { margin-top: 28px; padding: 14px 20px; border-radius: 14px; background: var(--paper); border: 1px solid var(--track); color: var(--ink2); font-size: 14px; line-height: 1.8; }
+.method summary { cursor: pointer; font-weight: 700; color: var(--ink); }
+.method p { margin: 10px 0 0; }
+.method code { font: 600 .92em var(--sign); background: var(--bg); padding: 1px 6px; border-radius: 5px; }
+
+/* disk: measured times as bars on one scale */
+.speed-cmp { margin: 22px 0 0; max-width: 34em; }
+.sc-title { margin: 14px 0 6px !important; font-size: 13.5px; font-weight: 700; color: var(--ink) !important; }
+.sc { display: grid; grid-template-columns: 116px minmax(0, 1fr) 64px; gap: 12px; align-items: center; height: 26px; font-size: 13.5px; }
+.sc span { color: var(--ink); font-weight: 700; }
+.sc i { display: block; height: 10px; border-radius: 0 5px 5px 0; background: var(--c); width: var(--w); transform-origin: left; }
+.sc.dim span { color: var(--ink2); font-weight: 500; }
+.sc.dim i { background: #9aa49f; }
+.sc b { font: 800 15px/1 var(--sign); text-align: right; }
+.sc.dim b { color: var(--ink2); }
+.sc-note { margin: 10px 0 0 !important; font-size: 12.5px; color: var(--ink3) !important; line-height: 1.7; }
+@media (prefers-reduced-motion: no-preference) {
+  .feature:not(.seen) .sc i { transform: scaleX(0); }
+  .feature.seen .sc i { transition: transform 1.1s cubic-bezier(.16, 1, .3, 1) .2s; }
+}
+
+@media (max-width: 920px) {
+  .vs { padding-top: 40px; padding-bottom: 90px; }
+  .xs { grid-template-columns: 1fr; }
+  .xs > div + div { padding-left: 0; border-left: 0; border-top: 1px solid var(--track); }
+  .why-pair, .reasons { grid-template-columns: 1fr; }
+  .lane, .tl { grid-template-columns: 96px minmax(0, 1fr) 76px; gap: 10px; }
+}
+@media (max-width: 640px) {
+  /* the name and time above, the track below */
+  .lane { grid-template-columns: minmax(0, 1fr) auto; grid-template-areas: "who t" "track track"; row-gap: 8px; }
+  .lane .who { grid-area: who; } .lane .t { grid-area: t; } .lane .track { grid-area: track; }
+  .tl { grid-template-columns: 76px minmax(0, 1fr) 58px; }
+  .race-result { flex-wrap: wrap; }
+  .race-result .x { font-size: 32px; }
+  .lane .t, .tl b { font-size: 17px; }
+}
+
+/* measured: the search against Explorer and Sakura Editor */
+.vs-video { margin: 0 0 34px; max-width: 960px; }
+.runs .cmp th small, .runs .cmp td small { display: block; font-size: 12.5px; font-weight: 500; color: var(--ink3); line-height: 1.6; }
+.runs .cmp td b { display: block; font: 800 20px/1.3 var(--sign); color: var(--ink); }
+.runs .cmp td.me b { color: var(--c); }
+.runs .cmp tbody th { width: 30%; }
+.runs .cmp td { width: auto; }
+.vs-search .sc-note { margin-top: 14px !important; }
+@media (max-width: 640px) {
+  .runs .cmp tbody th { width: auto; }
+  .runs .cmp td:nth-child(3)::before { content: "Shiori 1 回目"; }
+  .runs .cmp td:nth-child(4)::before { content: "Shiori 2 回目"; }
+  .runs .cmp td:nth-child(5)::before { content: "Shiori 3 回目"; }
+  .runs .cmp td:nth-child(6)::before { content: "次に起動したあと"; }
+  .runs .cmp td:not(.me)::before { content: "相手"; }
+}

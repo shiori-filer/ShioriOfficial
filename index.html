@@ -23,6 +23,7 @@
   <a class="brand" href="#top" aria-label="Shiori トップへ"><img src="media/icon.png" alt="" width="30" height="30"><span>Shiori</span><small>栞</small></a>
   <nav aria-label="ページ内">
     <a href="#f1">機能</a>
+    <a href="#log">ログ解析</a>
     <a href="#more">ほかにも</a>
     <a href="guide/">使い方</a>
     <a class="go" href="#download">ダウンロード</a>
@@ -153,7 +154,7 @@
     <div class="rail"><i class="fill"></i></div>
     <span class="nb" aria-hidden="true"><small>SH</small><b>05</b></span>
     <div class="text">
-      <h2>爆速検索。ファイルの中身まで。</h2>
+      <h2>高速検索。ファイルの中身まで。</h2>
       <p>ファイル名は打つそばから見つかります。Tab を押せば中身の検索に切り替わり、Excel のセルや図形、Word、PowerPoint、テキストやソースコードの中まで探せます。</p>
       <ul>
         <li>このフォルダ・このワークスペース・すべてのワークスペースから選べる</li>
@@ -163,23 +164,149 @@
     <figure class="shot"><video src="media/search.mp4" poster="media/search.jpg" muted loop playsinline preload="none" aria-label="ファイル名と中身を検索する様子"></video></figure>
   </section>
 
-  <section class="seg feature" id="f6" style="--c: var(--blue)">
+  <section class="seg vs vs-search" id="vs-search" style="--c: var(--blue)">
+    <div class="rail"><i class="fill"></i></div>
+    <span class="nb transfer" aria-hidden="true"><b>実測</b></span>
+    <div class="vs-body">
+      <h2>エクスプローラー、サクラエディタと、同じ条件で比べました。</h2>
+      <p class="vs-lead">見つかる件数が同じになる条件で、3 回ずつ測りました。Shiori は 2 回目から、さらに速くなります。一度探したフォルダはアプリを閉じても覚えているので、次に起動したあとも、ほぼ 2 回目の速さで出ます。</p>
+      <figure class="shot vs-video"><video src="media/search-race.mp4" poster="media/search-race.jpg" muted loop playsinline preload="none" aria-label="ファイル名の検索でエクスプローラーと、中身の検索でサクラエディタと、かかる時間を実測で比べた動画"></video></figure>
+      <div class="cmp-wrap vs-table runs">
+        <table class="cmp">
+          <thead><tr><th scope="col">探したもの</th><th scope="col">相手</th><th scope="col" class="me">Shiori 1 回目</th><th scope="col" class="me">2 回目</th><th scope="col" class="me">3 回目</th><th scope="col" class="me">次に起動したあと</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">ファイル名<small>C:\Windows（41 万件）から .config、446 件</small></th><td>エクスプローラー<b class="num">118 秒</b></td><td class="me"><b class="num">2.6 秒</b><small>約 45 倍</small></td><td class="me"><b class="num">0.004 秒</b></td><td class="me"><b class="num">0.004 秒</b></td><td class="me"><b class="num">0.05 秒</b></td></tr>
+            <tr><th scope="row">ファイルの中身<small>ソースコード 2.5 万ファイル（624 MB）から「deprecated」、2,453 ファイル</small></th><td>サクラエディタ<b class="num">10.5 秒</b><small>3 回とも 10〜11 秒</small></td><td class="me"><b class="num">0.78 秒</b><small>約 13 倍</small></td><td class="me"><b class="num">0.18 秒</b><small>約 58 倍</small></td><td class="me"><b class="num">0.17 秒</b></td><td class="me"><b class="num">0.24 秒</b></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="sc-note">同じ PC（Core i7-14700F・メモリ 32 GB・NVMe SSD・Windows 11）での実測。エクスプローラーは検索結果が出そろうまで、サクラエディタは Grep の時間（起動の時間は除く、3 回の中央値）。Shiori は 3 回の中央値で、「次に起動したあと」は覚えていた内容を読み込む時間を含みます。</p>
+    </div>
+  </section>
+
+  <!-- ===================================================== the log viewer, and how it compares (measured) -->
+  <section class="seg feature" id="log" style="--c: var(--blue)">
     <div class="rail"><i class="fill"></i></div>
     <span class="nb" aria-hidden="true"><small>SH</small><b>06</b></span>
     <div class="text">
-      <h2>空き容量を、すぐにチェック。</h2>
-      <p>ドライブの空きと、どのフォルダが場所を取っているかを大きい順に表示します。node_modules のような作り直せるフォルダや、大きいファイル、重複しているファイルもわかります。</p>
+      <h2>ログ解析を、一瞬で。</h2>
+      <p>数百 MB のログも、言葉・時間・レベル・行の形で絞り込み。条件を変えるたびにファイルを読み直すエディターの Grep と違い、一度読み込めば、絞り込みは数ミリ秒で終わります。</p>
       <ul>
-        <li>ドライブの一覧に空き容量のメーター</li>
-        <li>大きいファイル Top 100、重複ファイルの検出。不要なものはその場でごみ箱へ</li>
+        <li>エラーが何時に多いか、毎日同じ時刻に起きているかが、グラフとマス目でひと目で</li>
+        <li>選んだ行の前後 5 分、折りたたんだスタックトレースもその場で</li>
+        <li>絞り込みをタブに残して、左右に並べて時刻をそろえて比べる</li>
+        <li>正規表現を覚えていなくても、ログに出てくる言葉から選ぶだけ</li>
       </ul>
     </div>
-    <figure class="shot"><video src="media/disk.mp4" poster="media/disk.jpg" muted loop playsinline preload="none" aria-label="フォルダごとの容量を調べる様子"></video></figure>
+    <figure class="shot"><video src="media/log.mp4" poster="media/log.jpg" muted loop playsinline preload="none" aria-label="ログビューアーで絞り込み、時間帯を選び、2 つの絞り込みを左右に並べる様子"></video></figure>
+  </section>
+
+  <section class="seg vs" id="vs" style="--c: var(--blue)">
+    <div class="rail"><i class="fill"></i></div>
+    <span class="nb transfer" aria-hidden="true"><b>実測</b></span>
+    <div class="vs-body">
+      <h2>サクラエディタの Grep と、同じログで比べました。</h2>
+      <p class="vs-lead">234 MB・200 万行のログで、同じ言葉を探す時間を測りました。Shiori は最初に 1 回だけログを読み込み（1.2 秒。これだけでもサクラエディタの Grep 1 回より短い時間です）、そのあとは条件を変えるたびに、下の速さで結果が出ます。</p>
+
+      <!-- the race: Sakura's bar fills in real time; Shiori's is done before you see it start -->
+      <div class="race" data-run="word" aria-live="polite">
+        <div class="race-head">
+          <div class="race-tabs" role="tablist" aria-label="探し方">
+            <button role="tab" aria-selected="true" data-k="word">言葉 1 つ<small>U0123</small></button>
+            <button role="tab" aria-selected="false" data-k="regex">正規表現<small>PW-\d{3}9999</small></button>
+            <button role="tab" aria-selected="false" data-k="or">どちらかの言葉<small>満杯 または 失敗</small></button>
+          </div>
+          <button class="again" type="button">もう一度</button>
+        </div>
+        <div class="lane sakura"><span class="who">サクラエディタ<small>Grep</small></span><span class="track"><i></i></span><b class="t num">0.00 秒</b></div>
+        <div class="lane shiori"><span class="who">Shiori<small>読み込んだあとの検索</small></span><span class="track"><i></i></span><b class="t num">—</b></div>
+        <p class="race-result"><b class="num x">約 360 倍</b><span>速く見つかりました</span></p>
+      </div>
+
+      <dl class="xs">
+        <div><dt>言葉 1 つ</dt><dd><b class="num">360<i>×</i></b><span class="num">2.25 秒 → 6.3 ms</span></dd></div>
+        <div><dt>正規表現</dt><dd><b class="num">260<i>×</i></b><span class="num">1.69 秒 → 6.6 ms</span></dd></div>
+        <div><dt>どちらかの言葉</dt><dd><b class="num">330<i>×</i></b><span class="num">1.96 秒 → 6.0 ms</span></dd></div>
+      </dl>
+
+      <!-- ten changes of the condition, as two timelines on one scale -->
+      <figure class="ten">
+        <figcaption><b>条件を 10 回変えながら調べると</b>ログの調査は、言葉を足して、時間を絞って、また別の言葉で…のくり返し。</figcaption>
+        <div class="tl sakura"><span class="who">サクラエディタ</span><span class="bar"><i style="--i:0"></i><i style="--i:1"></i><i style="--i:2"></i><i style="--i:3"></i><i style="--i:4"></i><i style="--i:5"></i><i style="--i:6"></i><i style="--i:7"></i><i style="--i:8"></i><i style="--i:9"></i></span><b class="num">22.5 秒</b></div>
+        <div class="tl shiori"><span class="who">Shiori</span><span class="bar"><i class="load"></i><i class="tick" style="--i:0"></i><i class="tick" style="--i:1"></i><i class="tick" style="--i:2"></i><i class="tick" style="--i:3"></i><i class="tick" style="--i:4"></i><i class="tick" style="--i:5"></i><i class="tick" style="--i:6"></i><i class="tick" style="--i:7"></i><i class="tick" style="--i:8"></i><i class="tick" style="--i:9"></i></span><b class="num">1.3 秒</b></div>
+        <p class="tl-note">Shiori の 1.3 秒のほとんどは、最初の 1 回の読み込みです。そのあとの 10 回は合わせて 0.06 秒。条件を変えるたびの待ち時間は、ほぼなくなります。</p>
+      </figure>
+
+      <!-- why: read once, remember, all cores -->
+      <div class="why">
+        <h3>なぜ速いのか</h3>
+        <div class="why-pair">
+          <figure class="how sakura" aria-label="サクラエディタは条件を変えるたびにファイルを先頭から読み直す">
+            <div class="doc"><i class="scan"></i></div>
+            <figcaption><b>サクラエディタ</b>条件を変えるたびに、ファイルを先頭から 1 本の流れで読み直します。</figcaption>
+          </figure>
+          <figure class="how shiori" aria-label="Shiori は一度読んだログを手元に置き、全コアで同時に探し、条件ごとの結果を覚える">
+            <div class="doc"><i class="scan c1"></i><i class="scan c2"></i><i class="scan c3"></i><i class="scan c4"></i><i class="scan c5"></i><i class="scan c6"></i></div>
+            <figcaption><b>Shiori</b>読むのは最初の 1 回だけ。CPU の全コアで同時に探し、条件ごとの結果を覚えておくので、時間やレベルを変えても読み直しません。</figcaption>
+          </figure>
+        </div>
+        <ol class="reasons">
+          <li><b>読み込みは 1 回</b>ログは手元に置いたまま。条件を変えても、ディスクから読み直しません。</li>
+          <li><b>全コアで同時に</b>ログを分けて、CPU のすべてのコアで同時に探します。</li>
+          <li><b>結果を覚える</b>言葉を打ち足したときや、時間・レベルを変えたときは、前の結果を使うので探し直しません。</li>
+        </ol>
+      </div>
+
+      <!-- the same work, step by step -->
+      <div class="cmp-wrap vs-table">
+        <table class="cmp">
+          <thead><tr><th scope="col">やりたいこと</th><th scope="col">サクラエディタでやると</th><th scope="col" class="me">Shiori なら</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">エラーが何時に多いか</th><td>Grep の結果の行を時刻ごとに数える（Excel に貼って集計）</td><td class="me">時間のグラフに、エラーが赤で出ている</td></tr>
+            <tr><th scope="row">毎日同じ時刻に起きているか</th><td>日ごとに Grep して、時刻を見比べる</td><td class="me">「毎日の時間帯」のマス目で、同じ列に赤い点が並ぶ</td></tr>
+            <tr><th scope="row">エラーの前後に何があったか</th><td>タグジャンプでファイルを開き、前後をスクロールして探す</td><td class="me">「選んだ行の前後 5 分」を押すだけ。スタックトレースは Enter で開く</td></tr>
+            <tr><th scope="row">A を含み、B は含まない</th><td>先読みの正規表現を書くか、Grep の結果をさらに Grep する</td><td class="me">「含む」「含まない」のチップを並べるだけ</td></tr>
+            <tr><th scope="row">2 つの絞り込みを時系列で比べる</th><td>結果のウィンドウを 2 つ並べ、時刻を目で合わせる</td><td class="me">タブをドラッグして左右に。スクロールは時刻がそろったまま動く</td></tr>
+            <tr><th scope="row">11/10〜11/12 の 9〜12 時だけ</th><td>日付と時刻の正規表現を組み立てる</td><td class="me">マス目を四角く囲む</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <details class="method">
+        <summary>測った環境</summary>
+        <p>PC: Intel Core i7-14700F（28 論理コア）、メモリ 32 GB、NVMe SSD、Windows 11。データ: UTF-8 のログ 1 ファイル（234 MB・200 万行）。どちらも 2 回目以降（ファイルが OS のキャッシュに載った状態）の、3 回の中央値です。</p>
+        <p>サクラエディタ 2.4.2 は Grep を始めてから終わるまで（起動の時間は除く）、Shiori はログを読み込んだあと、条件を入れてから結果が出るまでの時間です。見つかった件数は、どの条件も同じでした。</p>
+      </details>
+    </div>
+  </section>
+
+  <section class="seg feature" id="f6" style="--c: var(--blue)">
+    <div class="rail"><i class="fill"></i></div>
+    <span class="nb" aria-hidden="true"><small>SH</small><b>07</b></span>
+    <div class="text">
+      <h2>空き容量を、すぐにチェック。</h2>
+      <p>C ドライブ全体（160 万ファイル）を 7 秒で数え、どのフォルダが場所を取っているかを大きい順に。調べている間は、フォルダごとの路線図ができていきます。いらないものは、その場で削除できます。</p>
+      <div class="speed-cmp" aria-label="フォルダの大きさを数える時間の比較">
+        <p class="sc-title">C ドライブ全体（160 万ファイル・784 GB）</p>
+        <div class="sc"><span>Shiori</span><i style="--w: 13.5%"></i><b class="num">7.0 秒</b></div>
+        <div class="sc dim"><span>dir /s</span><i style="--w: 100%"></i><b class="num">52 秒</b></div>
+        <p class="sc-title">Program Files（14 万ファイル）</p>
+        <div class="sc"><span>Shiori</span><i style="--w: 2.6%"></i><b class="num">0.15 秒</b></div>
+        <div class="sc dim"><span>dir /s</span><i style="--w: 34%"></i><b class="num">1.9 秒</b></div>
+        <div class="sc dim"><span>PowerShell</span><i style="--w: 100%"></i><b class="num">5.6 秒</b></div>
+        <p class="sc-note">同じ PC（Core i7-14700F・NVMe SSD）、2 回目以降の実測。dir /s と PowerShell は、Windows の標準の方法でファイルの大きさを合計した時間です。</p>
+      </div>
+      <ul>
+        <li>node_modules のような作り直せるフォルダに印。大きいファイル Top 100、重複ファイルの検出も</li>
+        <li>Windows のフォルダは消せないように守ったまま、不要なフォルダはその場でごみ箱へ・完全に削除</li>
+      </ul>
+    </div>
+    <figure class="shot"><video src="media/disk.mp4" poster="media/disk.jpg" muted loop playsinline preload="none" aria-label="容量を調べる間に路線図ができていき、完了のあとでフォルダを削除する様子"></video></figure>
   </section>
 
   <section class="seg feature" id="f7" style="--c: var(--purple)">
     <div class="rail"><i class="fill"></i></div>
-    <span class="nb" aria-hidden="true"><small>SH</small><b>07</b></span>
+    <span class="nb" aria-hidden="true"><small>SH</small><b>08</b></span>
     <div class="text">
       <h2>開かずに、中身をプレビュー。</h2>
       <p>Space キーで、Excel・Word・PowerPoint・画像・Markdown・ソースコードの中身をその場で表示。↑↓ で次のファイルへ。右側の詳細ペインには、表の一部や同じファイルの別の版も出ます。</p>
@@ -193,7 +320,7 @@
 
   <section class="seg feature" id="f8" style="--c: var(--purple)">
     <div class="rail"><i class="fill"></i></div>
-    <span class="nb" aria-hidden="true"><small>SH</small><b>08</b></span>
+    <span class="nb" aria-hidden="true"><small>SH</small><b>09</b></span>
     <div class="text">
       <h2>テンプレートで、フォルダ構成ごと。</h2>
       <p>「01_要件定義」「02_基本設計」…といった案件フォルダのひな形を、フォルダごとテンプレートにできます。新しい案件は名前を付けるだけで、中のフォルダ構成とファイルがそのまま入ったフォルダとして作られます。</p>
@@ -264,8 +391,8 @@
       <img src="media/icon.png" alt="" width="104" height="104">
       <h2>Shiori をはじめる</h2>
       <p>Windows 10 / 11（64 ビット）。インストーラーをダウンロードして実行するだけです。</p>
-      <a class="btn primary big" href="download/Shiori_0.1.5_x64-setup.exe" download>Windows 版をダウンロード</a>
-      <p class="note">バージョン 0.1.5（インストーラー、約 4.7 MB）。<a href="terms.html">利用規約</a>に同意のうえお使いください。</p>
+      <a class="btn primary big" href="download/Shiori_0.2.0_x64-setup.exe" download>Windows 版をダウンロード</a>
+      <p class="note">バージョン 0.2.0（インストーラー、約 7.1 MB）。<a href="terms.html">利用規約</a>に同意のうえお使いください。</p>
       <p class="note">初めて実行すると「Windows によって PC が保護されました」と表示されることがあります。その場合は「詳細情報」→「実行」を選んでください。</p>
       <p class="note">ワークスペースの設定は、手で編集できるテキストファイル（TOML）に保存されます。Shiori が外部へデータを送ることはありません。</p>
     </div>
