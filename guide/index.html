@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Shiori の使い方</title>
+<link rel="icon" href="img/favicon.png">
 <!-- The user guide. Opened from the app (F1 / Shiori について) in its own window, and published
      on the official site as /guide/. Self-contained: Windows' own fonts, images in img/. -->
 <style>
@@ -193,6 +194,7 @@
         <li>よく使うフォルダは、右クリックの「ピン留め」でサイドバーに並べられます。</li>
         <li>OneDrive は、サイドバーの「OneDrive」にアカウントごと（個人用・会社ごと）にまとまって並びます。会社の SharePoint や Teams から同期したフォルダも、その会社の下に入ります。ワークスペースと同じように折りたためます。</li>
         <li>ZIP・7z などの圧縮ファイルは、ダブルクリックでフォルダのように中へ入れます（7z・rar は 7-Zip が必要）。</li>
+        <li>展開している間は、右下に進み具合（割合・大きさ・ファイル数）が出ます。終わると「取り出しました」に変わります。× で中止すると、取り出しかけたものは消します。</li>
       </ul>
     </section>
 
@@ -218,7 +220,7 @@
 
     <section class="ch" id="preview" style="--c: var(--blue)">
       <h2>プレビューと詳細</h2>
-      <p>ファイルを選んで <kbd>Space</kbd> を押すと、開かずに中身を確認できます。<kbd>↑</kbd><kbd>↓</kbd> で次のファイルへ、<kbd>Enter</kbd> でそのまま開きます。Excel・Word（見出し・箇条書き・表を整えて表示）・PowerPoint・PDF・画像・Markdown・ソースコードに対応しています。</p>
+      <p>ファイルを選んで <kbd>Space</kbd> を押すと、開かずに中身を確認できます。<kbd>↑</kbd><kbd>↓</kbd> で次のファイルへ、<kbd>Enter</kbd> でそのまま開きます。Excel・Word（見出し・箇条書き・表を整えて表示）・PowerPoint・PDF・画像・Markdown・ソースコードに対応しています。表示した文字はドラッグで選んで <kbd>Ctrl</kbd>+<kbd>C</kbd> でコピーできます（<kbd>Ctrl</kbd>+<kbd>A</kbd> で全部。行番号は入りません）。</p>
       <div class="pair">
         <figure>
           <img src="img/preview.webp" alt="Excel のファイルを Space キーでプレビューしているところ" width="1280" height="800" loading="lazy">
@@ -226,7 +228,7 @@
         </figure>
         <figure>
           <img src="img/inspector.webp" alt="右側の詳細に、表の中身、作成者、最終更新者などが出ているところ" width="1280" height="800" loading="lazy">
-          <figcaption>詳細（<kbd>Alt</kbd>+<kbd>Shift</kbd>+<kbd>P</kbd>）: 中身の一部、作成者・最終更新者、ダウンロード元、同じファイルの別の版など。</figcaption>
+          <figcaption>詳細（<kbd>Alt</kbd>+<kbd>Shift</kbd>+<kbd>P</kbd>）: 中身の一部、作成者・最終更新者、ダウンロード元、同じファイルの別の版など。フォルダを選ぶと、その大きさ（ファイル数・フォルダ数）を最後まで数えて出します（一覧には出しません）。</figcaption>
         </figure>
       </div>
     </section>
@@ -238,7 +240,9 @@
         <figcaption>右クリックメニュー。Windows のメニューのよく使う項目（7-Zip、TortoiseGit など）も直接並べられます（設定 →「右クリックメニュー」）。</figcaption>
       </figure>
       <ul class="do">
-        <li><b>コピー・移動:</b> <kbd>Ctrl</kbd>+<kbd>C</kbd>・<kbd>Ctrl</kbd>+<kbd>X</kbd>・<kbd>Ctrl</kbd>+<kbd>V</kbd> とドラッグ。大きなコピーは順番に処理し、進み具合を下に表示します。同じ名前があるときは、どうするか聞きます。</li>
+        <li><b>コピー・移動:</b> <kbd>Ctrl</kbd>+<kbd>C</kbd>・<kbd>Ctrl</kbd>+<kbd>X</kbd>・<kbd>Ctrl</kbd>+<kbd>V</kbd> とドラッグ。大きなコピーは順番に処理し、進み具合を下に表示します。同じ名前があるときは、コピーを始める前にどうするか聞きます。</li>
+        <li><b>画像・テキストの貼り付け:</b> クリップボードにファイルがなく、画像（スクリーンショットなど）があるときは <kbd>Ctrl</kbd>+<kbd>V</kbd> で PNG ファイルとして、テキストなら .txt ファイルとして今のフォルダに保存します。名前は日時（「20261116_213045.png」など）で、すぐに名前を入力して変えられます（<kbd>Ctrl</kbd>+<kbd>Z</kbd> で取り消し）。</li>
+        <li><b>使用中で操作できないとき:</b> 名前の変更・移動・削除が「使用中」で失敗したときは、そのファイルを開いているアプリ（Excel など）や、そのフォルダを作業フォルダにしているアプリ（ターミナルや、そこのファイルを開いたサクラエディタなどのエディター）の名前を、画面の中央に出します。「もう一度」でやり直せます。</li>
         <li><b>ほかのアプリへドラッグ:</b> エクスプローラーと同じように、ファイルそのものを渡せます（メールに添付、ブラウザからアップロード、エクスプローラーへコピー・移動など）。</li>
         <li><b>元に戻す:</b> <kbd>Ctrl</kbd>+<kbd>Z</kbd>。名前の変更・移動・コピーに加えて、ごみ箱に入れた削除も元の場所に戻せます。</li>
         <li><b>日付を付けて複製:</b> 「画面設計書_20261114.xlsx」のように、今日の日付を付けてコピーします。</li>
@@ -246,6 +250,19 @@
         <li><b>比較:</b> 2 つ選んで右クリック →「比較」で WinMerge を開きます（ファイル同士・フォルダ同士）。</li>
         <li><b>開く:</b> ターミナル（<kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>T</kbd>）、エディタ（<kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>E</kbd>）で今の場所を開けます。</li>
         <li>OneDrive・SharePoint のフォルダでは、「クラウドのみ」「この PC にある」などの状態を表示します。</li>
+      </ul>
+      <h3>画像の編集</h3>
+      <p>画像を右クリック →「画像を編集」か、プレビュー（<kbd>Space</kbd>）で <kbd>E</kbd> を押すと、別のウィンドウで開きます。スクリーンショットに印を付けて、エビデンスや手順書に貼るときに使えます。</p>
+      <figure>
+        <img src="img/imgedit.webp" alt="画像の編集のウィンドウ。一覧のスクリーンショットに、赤い枠・番号・矢印・吹き出しの文字が入り、左下の名前はモザイクで隠してある。下に道具と色のバー" width="1280" height="800" loading="lazy">
+        <figcaption>下のバーで道具（枠・矢印・番号・文字・隠す・切り取り）と色を選びます。描いた色は配色を変えても同じです。</figcaption>
+      </figure>
+      <ul class="do">
+        <li><b>道具と色の切り替え:</b> <kbd>Tab</kbd>・<kbd>←</kbd> <kbd>→</kbd> で道具を順に、<kbd>Ctrl</kbd>+<kbd>Tab</kbd> で色を一つ右へ（右端の次は左端）。「隠す」では <kbd>Ctrl</kbd>+<kbd>Tab</kbd> でモザイクと塗りつぶしを切り替えます。</li>
+        <li><b>番号:</b> クリックするたびに 1、2、3…と増えます。「1 から」で振り直せます。</li>
+        <li><b>切り取り:</b> 残す範囲を囲んで、右クリックか <kbd>Enter</kbd>。</li>
+        <li><b>元に戻す:</b> <kbd>Ctrl</kbd>+<kbd>Z</kbd> で一つずつ戻せます（<kbd>Ctrl</kbd>+<kbd>Y</kbd> でやり直し）。番号や切り取りも戻ります。</li>
+        <li><b>コピーと保存:</b> 「コピー」（<kbd>Ctrl</kbd>+<kbd>C</kbd>）で Excel や Word、メールにそのまま貼れます。「別名で保存」（<kbd>Ctrl</kbd>+<kbd>S</kbd>）は元の画像の横に「〜_編集.png」として保存します。元の画像は書き換えません。</li>
       </ul>
     </section>
 
@@ -296,6 +313,7 @@
       </div>
       <ul class="do">
         <li>ほかのブランチは<b>表示するだけ</b>で、チェックアウトはしません。「すべてのブランチ」で全部のブランチのコミットを並べることもできます。</li>
+        <li>コミットの件名・作者、メッセージ、ファイルのパス、差分の行は、ドラッグで選んで <kbd>Ctrl</kbd>+<kbd>C</kbd> でコピーできます。差分は、ドラッグを始めた側（変更前か変更後）の行だけが選ばれます。</li>
         <li>差分のウィンドウは 1 つで、別のファイルを開くと切り替わります。<kbd>Alt</kbd>+<kbd>→</kbd> / <kbd>Alt</kbd>+<kbd>←</kbd> で同じコミットの次 / 前のファイル、<kbd>Alt</kbd>+<kbd>↓</kbd> / <kbd>Alt</kbd>+<kbd>↑</kbd>（または <kbd>F7</kbd>）で次 / 前の変更へ。</li>
         <li>ログのウィンドウを閉じると、そこから開いた差分のウィンドウも閉じます。</li>
         <li>折り返さないときは、長い行を横にスクロールして見られます（左右が一緒に動きます。<kbd>Shift</kbd>+ホイールでも）。</li>
