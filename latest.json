@@ -1,11 +1,11 @@
 {
-  "version": "0.2.1",
-  "notes": "- 画像の編集機能を追加（spaceキー→Eキー）\r\n- コピー・移動・展開の高速化",
-  "pub_date": "2026-11-17T10:15:21Z",
+  "version": "0.2.2",
+  "notes": "- 文字コード・改行コードの変換\r\n- 右クリックからパスワード付きで圧縮\r\n- 新規ファイルの種別指定\r\n- 登録フォルダをドラッグで並べ替え\r\n- アドレス欄にファイルのパスを入れたら開く",
+  "pub_date": "2026-11-18T11:57:08Z",
   "platforms": {
     "windows-x86_64": {
-      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTMUR6cnBJK200b2sva2FVTlU4ZmJ1eEJGNDVBYTJZUm9Ta25uWjNnSjl4aTgrdmJlanF3WXd4UTMwSlJOcDB3YXRUNU5WcGR0UWRsQytCT1lHeDBXQi9pMEo0MFd1RWdnPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzk0OTEwNTE0CWZpbGU6U2hpb3JpXzAuMi4xX3g2NC1zZXR1cC5leGUJdmVyc2lvbjowLjIuMQpVV3d4VXJuVXhYb3BRTDFXNENqcnFkV0ZxVGVoMlc1VWY4azhmQVdEQXM3VStLeC9LencvdEhadDVEaGhFeE1iNnNXZE5aTndoNFltTnhXMElRcnJEQT09Cg==",
-      "url": "https://shiori-filer.github.io/ShioriOfficial/download/Shiori_0.2.1_x64-setup.exe"
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTMUR6cnBJK200b291dlExYTBjdnlOREZKSjRleXVuaGc5WXhvdTVBbUIzVXN5dlV4ZFhHODI5L2JxSjMzMTgyWUtwOHcrZ1g1VDJOTHZNVDl4cjJmc1pOaGVzWnYzcEF3PQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzk1MDAzMDI3CWZpbGU6U2hpb3JpXzAuMi4yX3g2NC1zZXR1cC5leGUJdmVyc2lvbjowLjIuMgpibG5iQlJxWTg5SzFMZXBvaE0rWVUxcmFLZTc3RlBBSis4SEhobm45OHFmbVJJYnB5Z0pPZmZsNHY3NzBRTE1VUUFPTmJUWXZ1VXdzdkZBNklzYWtBdz09Cg==",
+      "url": "https://shiori-filer.github.io/ShioriOfficial/download/Shiori_0.2.2_x64-setup.exe"
     }
   }
 }

@@ -11,7 +11,7 @@
 </p>
 
 <p align="center">
-  <a href="https://shiori-filer.github.io/ShioriOfficial/download/Shiori_0.2.1_x64-setup.exe"><b>ダウンロード（v0.2.1）</b></a>
+  <a href="https://shiori-filer.github.io/ShioriOfficial/download/Shiori_0.2.2_x64-setup.exe"><b>ダウンロード（v0.2.2）</b></a>
   ・
   <a href="https://shiori-filer.github.io/ShioriOfficial/">公式サイト</a>
   ・
@@ -106,7 +106,7 @@ Shiori は、こうした「ちょっと面倒」をまとめて片付けます�
 
 ## インストール
 
-1. [Shiori_0.2.1_x64-setup.exe](https://shiori-filer.github.io/ShioriOfficial/download/Shiori_0.2.1_x64-setup.exe) をダウンロードして実行します。
+1. [Shiori_0.2.2_x64-setup.exe](https://shiori-filer.github.io/ShioriOfficial/download/Shiori_0.2.2_x64-setup.exe) をダウンロードして実行します。
 2. 使用許諾契約に同意すると、インストールが始まります。管理者の権限は要りません（今のユーザーにだけインストールされます）。
 3. 新しいバージョンが出ると、起動したときに画面の上に知らせが出ます。「今すぐ更新」を押すと、そのまま更新して開き直します。
 
