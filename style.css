@@ -205,7 +205,9 @@ img, video { display: block; max-width: 100%; }
 .dl-body p { margin: 0; color: var(--ink2); max-width: 36em; }
 .dl-body .btn { margin-top: 12px; }
 .dl-body .note { font-size: 13px; color: var(--ink3); margin-top: 6px; }
-.dl-body .btn + .note { margin-top: 18px; }
+.dl-body .btn + .note, .dl-btns + .note { margin-top: 18px; }
+.dl-btns { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; }
+.dl-btns .btn { margin-top: 12px; }
 
 .foot { max-width: 1320px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px 24px; padding: 26px clamp(16px, 3vw, 40px) 40px; font-size: 13px; color: var(--ink3); border-top: 1px solid var(--track); }
 .f-brand { display: flex; align-items: center; gap: 8px; }
