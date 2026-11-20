@@ -37,16 +37,17 @@
 
   <div class="doc-grid">
   <aside class="route" aria-label="目次" hidden></aside>
-  <p class="intro">Windows 用ファイラー「Shiori」（以下「本ソフトウェア」）は、利用者の情報を集めません。設定もフォルダの一覧も、すべて利用者のパソコンの中だけに保存されます。インターネットに接続するのは、新しいバージョンの確認のときだけです。以下に、何がどこに保存され、何が外に出るのかを書いておきます。</p>
+  <p class="intro">Windows 用ファイラー「Shiori」（以下「本ソフトウェア」）は、利用者の情報を集めません。設定もフォルダの一覧も、すべて利用者のパソコンの中だけに保存されます。インターネットに接続するのは、新しいバージョンの確認と更新のときだけです。以下に、何がどこに保存され、何が外に出るのかを書いておきます。</p>
 
   <ol class="articles">
     <li id="a1">
       <span class="no" aria-hidden="true"><small>PP</small><b>01</b></span>
       <h2>インターネットに接続するのは、更新の確認だけです</h2>
-      <p>本ソフトウェアがインターネットに接続するのは、新しいバージョンの確認と、その更新のときだけです。</p>
+      <p>本ソフトウェアがインターネットに接続するのは、本ソフトウェアと Git の新しいバージョンの確認と、その更新のときだけです。</p>
       <ul>
         <li><strong>確認:</strong> 起動したときと、「Shiori について」で確認したときに、公式サイトにあるバージョンの情報を読みます。起動時の確認は「設定 → 更新」でオフにできます。</li>
         <li><strong>更新:</strong> 利用者が「今すぐ更新」を選んだときだけ、公式サイトからインストーラーをダウンロードします。</li>
+        <li><strong>Git の確認と更新:</strong> 利用者が「設定 → Git」の「新しいバージョンを確認」を押したときだけ、Git for Windows の公式サイト（gitforwindows.org）と GitHub から最新のバージョンの情報を読みます。「更新する」を選んだときだけ、GitHub から Git for Windows のインストーラーをダウンロードして実行します。自動では確認しません。</li>
       </ul>
       <p>このとき送られるのは、ウェブサイトを見るときと同じ通信の情報（IP アドレスなど）だけです。ファイルやフォルダ、ワークスペース、設定の内容は送りません。利用状況の送信や広告の表示は行いません。プレビューで Markdown を表示するときも、外部の画像は読み込みません。</p>
     </li>
@@ -56,11 +57,13 @@
       <p>本ソフトウェアは次の情報を、利用者のパソコンにだけ保存します。</p>
       <ul>
         <li><strong>ワークスペースと登録したフォルダ</strong>、<strong>設定</strong>: <code>%APPDATA%\jp.shiori.app\</code> の <code>workspaces.toml</code> と <code>settings.toml</code></li>
+        <li><strong>別ウィンドウ（Git のログ・コミット・容量など）の位置と大きさ</strong>（次に同じ場所に開くため）: 同じフォルダの <code>windows.json</code></li>
         <li><strong>よく開くフォルダの記録</strong>（移動の候補を並べるため）: 同じフォルダの <code>usage.json</code></li>
         <li><strong>開いていたタブと履歴、列の幅など画面の配置</strong>（再起動しても元に戻すため）: <code>%LOCALAPPDATA%\jp.shiori.app\</code></li>
         <li><strong>圧縮ファイルの中から開いたファイル</strong>: 一時フォルダ <code>%TEMP%\shiori-zip\</code></li>
       </ul>
       <p>アンインストールしたあと、これらのフォルダを削除すると、すべて消えます。</p>
+      <p>ポータブル版（<code>Shiori.exe</code> の横に <code>portable.txt</code> があるもの）では、これらをすべて <code>Shiori.exe</code> と同じフォルダの <code>data</code> フォルダに保存し、上のフォルダには保存しません。フォルダごと削除すると、すべて消えます。</p>
     </li>
     <li id="a3" style="--c: var(--orange)">
       <span class="no" aria-hidden="true"><small>PP</small><b>03</b></span>
