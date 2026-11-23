@@ -3,11 +3,15 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Shiori 栞 — 案件ごとに、フォルダをまとめるファイラー</title>
-<meta name="description" content="Shiori は、案件ごとにフォルダをまとめて開ける Windows 用ファイラーです。ワークスペースの階層管理、タブの保持、Git の状態、ファイルの中身までの検索、プレビュー、フォルダごとのテンプレートなど。">
-<meta property="og:title" content="Shiori 栞 — 案件ごとに、フォルダをまとめるファイラー">
-<meta property="og:description" content="散らばった仕事のフォルダを、案件ごとにひとまとめ。Windows 10 / 11 用のファイラー。">
-<meta property="og:image" content="media/hero.jpg">
+<title>Shiori 栞 — 探す、読む、コミットする。Windows のファイラー</title>
+<meta name="description" content="エクスプローラーの検索で 118 秒かかった 41 万ファイルから、2.6 秒で見つかる Windows 用ファイラー。大きなログの絞り込みはサクラエディタの Grep の約 360 倍、Git のコミットやプッシュもその場で。無料。">
+<meta property="og:title" content="Shiori 栞 — 探す、読む、コミットする。ファイラーの中で、待たずに。">
+<meta property="og:description" content="ファイル名の検索はエクスプローラーの約 45 倍（118 秒 → 2.6 秒）、ログの絞り込みはサクラエディタの Grep の約 360 倍。Git のコミットやプッシュもその場で。Windows 10 / 11 用の無料のファイラー。">
+<meta property="og:image" content="https://shiori-filer.github.io/ShioriOfficial/media/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:url" content="https://shiori-filer.github.io/ShioriOfficial/">
+<meta name="twitter:card" content="summary_large_image">
 <meta property="og:type" content="website">
 <meta name="theme-color" content="#f4f6f2">
 <link rel="icon" href="media/favicon.png">
@@ -22,8 +26,9 @@
 <header class="top">
   <a class="brand" href="#top" aria-label="Shiori トップへ"><img src="media/icon.png" alt="" width="30" height="30"><span>Shiori</span><small>栞</small></a>
   <nav aria-label="ページ内">
-    <a href="#f1">機能</a>
+    <a href="#f5">検索</a>
     <a href="#log">ログ解析</a>
+    <a href="#f3">Git</a>
     <a href="#more">ほかにも</a>
     <a href="guide/">使い方</a>
     <a class="go" href="#download">ダウンロード</a>
@@ -36,17 +41,22 @@
   <section class="seg hero" style="--c: var(--green)">
     <div class="rail"><i class="fill"></i></div>
     <div class="hero-copy">
+      <p class="eyebrow">Windows で開発・保守をする人のファイラー</p>
       <h1 class="route-title">
-        <span class="stop s1"><i class="dot"></i><span class="t">散らばった仕事のフォルダを、</span></span>
-        <span class="stop s2"><i class="dot"></i><span class="t">案件ごとにひとまとめ。</span></span>
+        <span class="stop s1"><i class="dot"></i><span class="t">探す、読む、コミットする。</span></span>
+        <span class="stop s2"><i class="dot"></i><span class="t">ファイラーの中で、待たずに。</span></span>
       </h1>
-      <p class="lead">設計書はファイルサーバー、ソースは別のドライブ、受け取った資料はダウンロード。
-        Shiori は、ひとつの案件のフォルダを「ワークスペース」にまとめて、いつでも一瞬で開ける Windows 用のファイラーです。</p>
+      <p class="lead">エクスプローラーで 118 秒かかった検索が 2.6 秒。数百 MB のログは一度読み込めば、条件を変えても数ミリ秒で絞り込めます。Git のコミットやプッシュも、別のツールを開かずにその場で。</p>
       <div class="cta">
         <a class="btn primary" href="#download">ダウンロード</a>
-        <a class="btn" href="#f1">機能を見る</a>
+        <a class="btn" href="#vs-search">実測を見る</a>
       </div>
-      <p class="req">Windows 10 / 11</p>
+      <ul class="proof">
+        <li style="--c: var(--blue)"><a href="#vs-search"><small>ファイル名の検索</small><b class="num">約 45 倍</b><span class="num">エクスプローラー 118 秒 → 2.6 秒</span></a></li>
+        <li style="--c: var(--blue)"><a href="#vs"><small>ログの絞り込み</small><b class="num">約 360 倍</b><span class="num">サクラエディタの Grep 2.25 秒 → 6.3 ms</span></a></li>
+        <li style="--c: var(--orange)"><a href="#f3"><small>Git</small><b>その場で</b><span>コミット・プッシュ・ブランチの切り替えまで</span></a></li>
+      </ul>
+      <p class="req">無料 ・ Windows 10 / 11（64 ビット）・ 管理者の権限は不要 ・ ポータブル版あり</p>
     </div>
     <!-- the product sits on a route map: each client's line runs into the app, and trains
          (folders from wherever they live) keep arriving in it -->
@@ -90,69 +100,10 @@
     </figure>
   </section>
 
-  <!-- ===================================================== features: one station each -->
-  <section class="seg feature" id="f1" style="--c: var(--green)">
-    <div class="rail"><i class="fill"></i></div>
-    <span class="nb" aria-hidden="true"><small>SH</small><b>01</b></span>
-    <div class="text">
-      <h2>ワークスペースを、階層で好きなだけ。</h2>
-      <p>「顧客 › 案件 › 作業」のように、ワークスペースは自由に入れ子にできます。サイドバーには路線図のように並び、ひとつのワークスペースに「ホーム」「設計書」「repo」など、別々の場所にあるフォルダを登録できます。</p>
-      <ul>
-        <li>Ctrl+K で、名前やよみ・ローマ字から一瞬で移動</li>
-        <li>ドラッグで並べ替え。色と略称（HKB など）で見分けやすく</li>
-        <li>今あるフォルダ構成から、まとめて取り込めます</li>
-      </ul>
-    </div>
-    <figure class="shot"><video src="media/workspaces.mp4" poster="media/workspaces.jpg" muted loop playsinline preload="none" aria-label="ワークスペースを切り替える様子"></video></figure>
-  </section>
-
-  <section class="seg feature" id="f2" style="--c: var(--green)">
-    <div class="rail"><i class="fill"></i></div>
-    <span class="nb" aria-hidden="true"><small>SH</small><b>02</b></span>
-    <div class="text">
-      <h2>開いていたフォルダは、再起動しても。</h2>
-      <p>タブと左右の分割は、ワークスペースごとに覚えています。別の案件に切り替えると、その案件で開いていたタブに。戻ればさっきの続きから。アプリを閉じて開き直しても、そのままです。</p>
-      <ul>
-        <li>案件ごとに、左右のペインとタブの並びを保存</li>
-        <li>閉じたタブは Ctrl+Alt+T で開き直せます</li>
-      </ul>
-    </div>
-    <figure class="shot"><video src="media/tabs.mp4" poster="media/tabs.jpg" muted loop playsinline preload="none" aria-label="ワークスペースごとにタブが戻る様子"></video></figure>
-  </section>
-
-  <section class="seg feature" id="f3" style="--c: var(--orange)">
-    <div class="rail"><i class="fill"></i></div>
-    <span class="nb" aria-hidden="true"><small>SH</small><b>03</b></span>
-    <div class="text">
-      <h2>Git の状態が、パスの横に。</h2>
-      <p>リポジトリを開くと、ブランチ名と、まだコミットしていない変更の数が出ます。数えるのは今開いているフォルダの中だけ。押せば、変更されたファイルの一覧からその場所へすぐ移れます。</p>
-      <ul>
-        <li>TortoiseGit と同じ見た目のバッジ（変更・追加・未追跡・無視）</li>
-        <li>このフォルダのログを一覧で。変更したファイルの差分を左右に並べて比べられます（WinMerge があればそちらでも）</li>
-        <li>まだプッシュしていないコミット数も表示</li>
-        <li>読み取りだけ。fetch や pull など、リポジトリを変えることはしません</li>
-      </ul>
-    </div>
-    <figure class="shot"><video src="media/git.mp4" poster="media/git.jpg" muted loop playsinline preload="none" aria-label="Git の変更を確認する様子"></video></figure>
-  </section>
-
-  <section class="seg feature" id="f4" style="--c: var(--orange)">
-    <div class="rail"><i class="fill"></i></div>
-    <span class="nb" aria-hidden="true"><small>SH</small><b>04</b></span>
-    <div class="text">
-      <h2>右クリックを、自分仕様に。</h2>
-      <p>Windows の右クリックメニューから、よく使う項目（7-Zip、TortoiseGit、WinMerge など）だけを Shiori のメニューに直接並べられます。「その他のオプションを確認」を開く手間はもうありません。</p>
-      <ul>
-        <li>設定画面でチェックを付けるだけ。サブメニューもそのまま使えます</li>
-        <li>パスのコピー（12 形式）、日付を付けて複製、ターミナル・エディタで開くも最初から</li>
-      </ul>
-    </div>
-    <figure class="shot"><video src="media/contextmenu.mp4" poster="media/contextmenu.jpg" muted loop playsinline preload="none" aria-label="右クリックメニューに項目を足す様子"></video></figure>
-  </section>
-
+  <!-- ===================================================== search, and how it compares (measured) -->
   <section class="seg feature" id="f5" style="--c: var(--blue)">
     <div class="rail"><i class="fill"></i></div>
-    <span class="nb" aria-hidden="true"><small>SH</small><b>05</b></span>
+    <span class="nb" aria-hidden="true"><small>SH</small><b>01</b></span>
     <div class="text">
       <h2>高速検索。ファイルの中身まで。</h2>
       <p>ファイル名は打つそばから見つかります。Tab を押せば中身の検索に切り替わり、Excel のセルや図形、Word、PowerPoint、テキストやソースコードの中まで探せます。</p>
@@ -187,10 +138,10 @@
   <!-- ===================================================== the log viewer, and how it compares (measured) -->
   <section class="seg feature" id="log" style="--c: var(--blue)">
     <div class="rail"><i class="fill"></i></div>
-    <span class="nb" aria-hidden="true"><small>SH</small><b>06</b></span>
+    <span class="nb" aria-hidden="true"><small>SH</small><b>02</b></span>
     <div class="text">
       <h2>ログ解析を、一瞬で。</h2>
-      <p>数百 MB のログも、言葉・時間・レベル・行の形で絞り込み。条件を変えるたびにファイルを読み直すエディターの Grep と違い、一度読み込めば、絞り込みは数ミリ秒で終わります。</p>
+      <p>数 GB のログも（PC のメモリに合わせて最大 8 GB）、言葉・時間・レベル・行の形で絞り込み。条件を変えるたびにファイルを読み直すエディターの Grep と違い、一度読み込めば、絞り込みは数ミリ秒で終わります。</p>
       <ul>
         <li>エラーが何時に多いか、毎日同じ時刻に起きているかが、グラフとマス目でひと目で</li>
         <li>選んだ行の前後 5 分、折りたたんだスタックトレースもその場で</li>
@@ -198,7 +149,7 @@
         <li>正規表現を覚えていなくても、ログに出てくる言葉から選ぶだけ</li>
       </ul>
     </div>
-    <figure class="shot"><video src="media/log.mp4" poster="media/log.jpg" muted loop playsinline preload="none" aria-label="ログビューアーで絞り込み、時間帯を選び、2 つの絞り込みを左右に並べる様子"></video></figure>
+    <figure class="shot"><video src="media/log.mp4" poster="media/log.jpg" muted loop playsinline preload="none" aria-label="ログビューアーで言葉と時間の範囲で絞り込み、毎日の時間帯を見る様子"></video></figure>
   </section>
 
   <section class="seg vs" id="vs" style="--c: var(--blue)">
@@ -280,6 +231,69 @@
     </div>
   </section>
 
+  <!-- ===================================================== Git and the right-click menu -->
+  <section class="seg feature" id="f3" style="--c: var(--orange)">
+    <div class="rail"><i class="fill"></i></div>
+    <span class="nb" aria-hidden="true"><small>SH</small><b>03</b></span>
+    <div class="text">
+      <h2>Git は、ファイラーの中で。</h2>
+      <p>リポジトリを開くと、パスの横にブランチ名と、まだコミットしていない変更の数。Git のパネルから、コミット・プッシュ・プルまで、別のツールのダイアログを開かずにその場で済みます。</p>
+      <ul>
+        <li>変更したファイルにチェックを入れて、メッセージを書いてコミット。「コミットしてプッシュ」も 1 回で</li>
+        <li>ブランチの切り替え・作成、タグ、変更の取り消し、.gitignore の一覧も同じパネルから</li>
+        <li>「ブランチの流れ」で、分かれて合流してきたブランチを路線図のように。路線名をドラッグしてマージ</li>
+        <li>このフォルダのログと、変更したファイルの差分を左右に並べて（WinMerge があればそちらでも）</li>
+        <li>TortoiseGit と同じ見た目のバッジ（変更・追加・未追跡・無視）</li>
+      </ul>
+    </div>
+    <figure class="shot"><video src="media/git.mp4" poster="media/git.jpg" muted loop playsinline preload="none" aria-label="Git のパネルからコミットしてプッシュし、ブランチの流れを路線図で見る様子"></video></figure>
+  </section>
+
+  <section class="seg feature" id="f4" style="--c: var(--orange)">
+    <div class="rail"><i class="fill"></i></div>
+    <span class="nb" aria-hidden="true"><small>SH</small><b>04</b></span>
+    <div class="text">
+      <h2>右クリックを、自分仕様に。</h2>
+      <p>Windows の右クリックメニューから、よく使う項目（7-Zip、TortoiseGit、WinMerge など）だけを Shiori のメニューに直接並べられます。「その他のオプションを確認」を開く手間はもうありません。</p>
+      <ul>
+        <li>設定画面でチェックを付けるだけ。サブメニューもそのまま使えます</li>
+        <li>パスのコピー（12 形式）、日付を付けて複製、ターミナル・エディタで開くも最初から</li>
+      </ul>
+    </div>
+    <figure class="shot"><video src="media/contextmenu.mp4" poster="media/contextmenu.jpg" muted loop playsinline preload="none" aria-label="右クリックメニューに項目を足す様子"></video></figure>
+  </section>
+
+  <!-- ===================================================== workspaces: why one stays -->
+  <section class="seg feature" id="f1" style="--c: var(--green)">
+    <div class="rail"><i class="fill"></i></div>
+    <span class="nb" aria-hidden="true"><small>SH</small><b>05</b></span>
+    <div class="text">
+      <h2>ワークスペースを、階層で好きなだけ。</h2>
+      <p>「顧客 › 案件 › 作業」のように、ワークスペースは自由に入れ子にできます。サイドバーには路線図のように並び、ひとつのワークスペースに「ホーム」「設計書」「repo」など、別々の場所にあるフォルダを登録できます。</p>
+      <ul>
+        <li>Ctrl+K で、名前やよみ・ローマ字から一瞬で移動</li>
+        <li>ドラッグで並べ替え。色と略称（HKB など）で見分けやすく</li>
+        <li>一覧のフォルダをサイドバーへドラッグして登録。今あるフォルダ構成からまとめて取り込むことも</li>
+      </ul>
+    </div>
+    <figure class="shot"><video src="media/workspaces.mp4" poster="media/workspaces.jpg" muted loop playsinline preload="none" aria-label="ワークスペースを切り替える様子"></video></figure>
+  </section>
+
+  <section class="seg feature" id="f2" style="--c: var(--green)">
+    <div class="rail"><i class="fill"></i></div>
+    <span class="nb" aria-hidden="true"><small>SH</small><b>06</b></span>
+    <div class="text">
+      <h2>開いていたフォルダは、再起動しても。</h2>
+      <p>タブと左右の分割は、ワークスペースごとに覚えています。別の案件に切り替えると、その案件で開いていたタブに。戻ればさっきの続きから。アプリを閉じて開き直しても、そのままです。</p>
+      <ul>
+        <li>案件ごとに、左右のペインとタブの並びを保存</li>
+        <li>閉じたタブは Ctrl+Alt+T で開き直せます</li>
+      </ul>
+    </div>
+    <figure class="shot"><video src="media/tabs.mp4" poster="media/tabs.jpg" muted loop playsinline preload="none" aria-label="ワークスペースごとにタブが戻る様子"></video></figure>
+  </section>
+
+  <!-- ===================================================== the rest, one station each -->
   <section class="seg feature" id="f6" style="--c: var(--blue)">
     <div class="rail"><i class="fill"></i></div>
     <span class="nb" aria-hidden="true"><small>SH</small><b>07</b></span>
@@ -301,7 +315,7 @@
         <li>Windows のフォルダは消せないように守ったまま、不要なフォルダはその場でごみ箱へ・完全に削除</li>
       </ul>
     </div>
-    <figure class="shot"><video src="media/disk.mp4" poster="media/disk.jpg" muted loop playsinline preload="none" aria-label="容量を調べる間に路線図ができていき、完了のあとでフォルダを削除する様子"></video></figure>
+    <figure class="shot"><video src="media/disk.mp4" poster="media/disk.jpg" muted loop playsinline preload="none" aria-label="容量を調べると路線図ができ、フォルダごとの大きさと大きいファイルを見る様子"></video></figure>
   </section>
 
   <section class="seg feature" id="f7" style="--c: var(--purple)">
@@ -340,13 +354,11 @@
       <h2>ほかにも、毎日の「ちょっと面倒」を。</h2>
       <ul class="lines">
         <li style="--l: var(--green)"><h3>アドレス欄が万能</h3><p>パスもワークスペース名もファイル名もコマンドも、Ctrl+L から全部ここで。</p></li>
-        <li style="--l: var(--orange)"><h3>ZIP・7z の中へそのまま</h3><p>ダブルクリックでフォルダのように中へ。日本語のファイル名も文字化けしません。</p></li>
-        <li style="--l: var(--blue)"><h3>左右 2 画面</h3><p>Ctrl+\ で分割。ドラッグ中は登録フォルダやピン留めが置き場所として出てきます。</p></li>
-        <li style="--l: var(--purple)"><h3>Ctrl+Z で元に戻す</h3><p>名前の変更・移動・コピーに加えて、ごみ箱に入れた削除も元の場所へ。</p></li>
-        <li style="--l: var(--green)"><h3>OneDrive の同期状態</h3><p>クラウドのみ・この PC にある・常に保持を、エクスプローラーと同じ意味で表示。</p></li>
-        <li style="--l: var(--orange)"><h3>詳細ペイン</h3><p>作成者、ダウンロード元、フォルダの中身（2 階層）などを右側に。</p></li>
-        <li style="--l: var(--blue)"><h3>WinMerge で比較</h3><p>2 つ選んで右クリック。ファイル同士もフォルダ同士も比べられます。</p></li>
-        <li style="--l: var(--purple)"><h3>4 つの配色</h3><p>昼・夜行・常磐・墨。暗い部屋向けや、白黒の高コントラストも。</p></li>
+        <li style="--l: var(--orange)"><h3>左右 2 画面</h3><p>Ctrl+\ で分割。ドラッグ中は登録フォルダやピン留めが置き場所として出てきます。</p></li>
+        <li style="--l: var(--blue)"><h3>画像の変換と編集</h3><p>iPhone の写真（HEIC）や WebP を JPG に、何枚かを 1 つの PDF に。スクリーンショットに印を付けてエビデンスにも。</p></li>
+        <li style="--l: var(--purple)"><h3>ZIP・7z を作る</h3><p>右クリックから圧縮。パスワード付きも。形式と圧縮レベルは設定で。</p></li>
+        <li style="--l: var(--green)"><h3>文字コード・改行コードの変換</h3><p>Shift_JIS ⇔ UTF-8、CRLF ⇔ LF を、フォルダごとまとめて。変換できない文字は、何行目かを先に知らせます。</p></li>
+        <li style="--l: var(--orange)"><h3>ショートカットを自分仕様に</h3><p>操作ごとに、キーを押すだけで割り当て。重なるときは付け替えます。</p></li>
       </ul>
     </div>
   </section>
@@ -357,20 +369,21 @@
     <span class="nb transfer" aria-hidden="true"><b>比較</b></span>
     <div class="cmp-body">
       <h2>エクスプローラーと比べると。</h2>
-      <p class="cmp-lead">いつものエクスプローラーはそのまま使えます。Shiori は、案件ごとに仕事をするときに足りないところを補います。</p>
+      <p class="cmp-lead">いつものエクスプローラーはそのまま使えます。Shiori は、開発や保守の仕事で足りないところを補います。</p>
       <div class="cmp-wrap">
         <table class="cmp">
           <thead>
             <tr><th scope="col">できること</th><th scope="col" class="me">Shiori</th><th scope="col">エクスプローラー（Windows 11）</th></tr>
           </thead>
           <tbody>
+            <tr><th scope="row">ファイルの中身で検索</th><td class="me"><span class="y">あり</span>Excel・Word・PowerPoint の中も、その場で</td><td><span class="p">一部</span>インデックスのある場所が中心</td></tr>
+            <tr><th scope="row">大きなログの絞り込み</th><td class="me"><span class="y">あり</span>数 GB まで。一度読み込めば、条件を変えても数ミリ秒</td><td><span class="n">なし</span></td></tr>
+            <tr><th scope="row">Git のコミット・プッシュ・ログと差分</th><td class="me"><span class="y">あり</span>パネルからその場で。ブランチの流れも路線図で</td><td><span class="n">なし</span></td></tr>
             <tr><th scope="row">案件ごとにフォルダをまとめる</th><td class="me"><span class="y">あり</span>ワークスペース（階層・色・略称）</td><td><span class="p">一部</span>クイックアクセスへのピン留め</td></tr>
             <tr><th scope="row">別々の場所のフォルダを 1 か所に</th><td class="me"><span class="y">あり</span>共有フォルダ・別のドライブ・リポジトリを登録</td><td><span class="n">なし</span></td></tr>
             <tr><th scope="row">開いていたタブを案件ごとに覚える</th><td class="me"><span class="y">あり</span>再起動しても元どおり</td><td><span class="p">一部</span>タブはあるが、案件ごとには分けられない</td></tr>
             <tr><th scope="row">左右 2 画面</th><td class="me"><span class="y">あり</span>ドラッグでコピー・移動</td><td><span class="n">なし</span>ウィンドウを 2 つ並べる</td></tr>
-            <tr><th scope="row">ファイルの中身で検索</th><td class="me"><span class="y">あり</span>Excel・Word・PowerPoint の中も、その場で</td><td><span class="p">一部</span>インデックスのある場所が中心</td></tr>
             <tr><th scope="row">開かずに中身を見る</th><td class="me"><span class="y">あり</span>Space で次々に（Excel・Word・Markdown・コード）</td><td><span class="p">一部</span>プレビュー ウィンドウ</td></tr>
-            <tr><th scope="row">Git のブランチ・変更・ログと差分</th><td class="me"><span class="y">あり</span>今のフォルダの分だけ表示</td><td><span class="n">なし</span></td></tr>
             <tr><th scope="row">フォルダ構成ごとのテンプレート</th><td class="me"><span class="y">あり</span>名前を付けるだけで同じ構成に</td><td><span class="n">なし</span></td></tr>
             <tr><th scope="row">場所を取っているフォルダを探す</th><td class="me"><span class="y">あり</span>大きい順、作り直せるフォルダに印</td><td><span class="p">一部</span>設定の「ストレージ」</td></tr>
             <tr><th scope="row">右クリックのよく使う項目</th><td class="me"><span class="y">あり</span>7-Zip・TortoiseGit などを直接並べる</td><td><span class="p">一部</span>「その他のオプションを確認」の中</td></tr>
@@ -392,11 +405,11 @@
       <h2>Shiori をはじめる</h2>
       <p>Windows 10 / 11（64 ビット）。インストーラーをダウンロードして実行するだけです。</p>
       <div class="dl-btns">
-        <a class="btn primary big" href="download/Shiori_0.3.1_x64-setup.exe" download>Windows 版をダウンロード</a>
-        <a class="btn big portable" href="download/Shiori_0.3.1_x64-portable.zip" download>ポータブル版（ZIP）</a>
+        <a class="btn primary big" href="download/Shiori_0.3.2_x64-setup.exe" download>Windows 版をダウンロード</a>
+        <a class="btn big portable" href="download/Shiori_0.3.2_x64-portable.zip" download>ポータブル版（ZIP）</a>
       </div>
-      <p class="note">バージョン 0.3.1（インストーラー、約 8.0 MB）。<a href="terms.html">利用規約</a>に同意のうえお使いください。</p>
-      <p class="note portable">ポータブル版（ZIP、約 9.8 MB）はインストール不要です。展開して Shiori.exe を実行するだけで、設定などはそのフォルダに保存します。USB メモリでも持ち歩けます。</p>
+      <p class="note">バージョン 0.3.2（インストーラー、約 8.1 MB）。<a href="terms.html">利用規約</a>に同意のうえお使いください。</p>
+      <p class="note portable">ポータブル版（ZIP、約 9.9 MB）はインストール不要です。展開して Shiori.exe を実行するだけで、設定などはそのフォルダに保存します。USB メモリでも持ち歩けます。</p>
       <p class="note">初めて実行すると「Windows によって PC が保護されました」と表示されることがあります。その場合は「詳細情報」→「実行」を選んでください。</p>
       <p class="note">ワークスペースの設定は、手で編集できるテキストファイル（TOML）に保存されます。Shiori が外部へデータを送ることはありません。</p>
     </div>
