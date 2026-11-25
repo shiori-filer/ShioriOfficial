@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- The pages of the official site, for search engines (sent to Google Search Console and Bing
+     Webmaster Tools). Add a page here when one is added to site/. -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://shiori-filer.github.io/ShioriOfficial/</loc>
+  </url>
+  <url>
+    <loc>https://shiori-filer.github.io/ShioriOfficial/guide/</loc>
+  </url>
+  <url>
+    <loc>https://shiori-filer.github.io/ShioriOfficial/privacy.html</loc>
+  </url>
+  <url>
+    <loc>https://shiori-filer.github.io/ShioriOfficial/terms.html</loc>
+  </url>
+</urlset>

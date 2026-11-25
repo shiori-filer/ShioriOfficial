@@ -3,7 +3,18 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Shiori の使い方</title>
+<title>使い方ガイド — Shiori 栞（Windows のファイラー）</title>
+<meta name="description" content="Windows 用ファイラー Shiori の使い方。ワークスペース、タブと 2 画面、ファイル名と中身の検索、ログビューアーと Grep、Git、プレビュー、容量、ショートカットの一覧まで。">
+<!-- for the official site (/guide/): in the app this page's title is not shown (the window has its own) -->
+<link rel="canonical" href="https://shiori-filer.github.io/ShioriOfficial/guide/">
+<meta property="og:title" content="使い方ガイド — Shiori 栞（Windows のファイラー）">
+<meta property="og:description" content="ワークスペース、タブと 2 画面、検索、ログビューアー、Git、プレビュー、ショートカットまで、Shiori の使い方をまとめています。">
+<meta property="og:url" content="https://shiori-filer.github.io/ShioriOfficial/guide/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Shiori 栞">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:image" content="https://shiori-filer.github.io/ShioriOfficial/media/og.png">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="img/favicon.png">
 <!-- The user guide. Opened from the app (F1 / Shiori について) in its own window, and published
      on the official site as /guide/. Self-contained: Windows' own fonts, images in img/. -->
@@ -137,7 +148,7 @@
         <figcaption>ワークスペースを開くと、登録したフォルダ（ホーム・設計書・repo）がボタンで並びます。</figcaption>
       </figure>
       <ul class="do">
-        <li><b>作る:</b> フォルダを開いて、サイドバーの「ワークスペース」の <b>＋</b>（<kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>N</kbd>）。一覧のフォルダをサイドバーの「ワークスペース」へドラッグしても作れます（ワークスペースの上に落とすとその下に、何個かまとめて落とすとまとめて登録）。</li>
+        <li><b>作る:</b> フォルダを開いて、サイドバーの「ワークスペース」の <b>＋</b>（<kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>N</kbd>）。一覧やエクスプローラーのフォルダをサイドバーの「ワークスペース」へドラッグしても作れます（ワークスペースの上に落とすとその下に、何個かまとめて落とすとまとめて登録）。</li>
         <li><b>フォルダを登録:</b> 見出しの「フォルダを登録」で、別の場所のフォルダ（共有フォルダ、別のドライブなど）も追加できます。</li>
         <li><b>並べ替え:</b> 登録したフォルダのボタンはドラッグで並べ替えられます（ワークスペースの編集画面では、行の左端のつまみをドラッグ）。左端（編集画面ではいちばん上）のフォルダが、ワークスペースを開いたときに開きます。</li>
         <li><b>まとめて取り込む:</b> <code>顧客\案件</code> のような今のフォルダ構成から、ワークスペースをまとめて作れます（「ワークスペース」の取り込みボタン）。</li>
@@ -248,6 +259,7 @@
         <li><b>文字コード・改行コードの変換:</b> 下のバーの「UTF-8 · CRLF」のような表示を押すか、コマンドパレット（<kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>P</kbd>）の「文字コード・改行コードを変換」で、選んでいるファイル（フォルダを選べば中のテキストファイルすべて）を UTF-8・Shift_JIS などや、改行の CRLF（Windows）・LF（Linux・Mac）に変えられます。EUC-JP・UTF-8 BOM・UTF-16 は「その他」にあります。変換先にない文字（Shift_JIS にない絵文字など）があるファイルは、変換する前に何行目のどの文字かを知らせて、そのままにします。テキストではないファイルも対象外です。<kbd>Ctrl</kbd>+<kbd>Z</kbd> で元に戻せます。</li>
         <li><b>使用中で操作できないとき:</b> 名前の変更・移動・削除が「使用中」で失敗したときは、そのファイルを開いているアプリ（Excel など）や、そのフォルダを作業フォルダにしているアプリ（ターミナルや、そこのファイルを開いたサクラエディタなどのエディター）の名前を、画面の中央に出します。「もう一度」でやり直せます。</li>
         <li><b>ほかのアプリへドラッグ:</b> エクスプローラーと同じように、ファイルそのものを渡せます（メールに添付、ブラウザからアップロード、エクスプローラーへコピー・移動など）。</li>
+        <li><b>エクスプローラーからドロップ:</b> エクスプローラーやデスクトップのファイル・フォルダを、一覧（開いているフォルダ、またはフォルダの行の上）・ピン留め・OneDrive のフォルダに落とすとコピーします。<kbd>Shift</kbd> を押しながら落とすと移動です（元の場所がドラッグ中にはわからないため、何も押さないときは同じドライブでもコピーにしています）。フォルダをサイドバーの「ワークスペース」に落とすと、ワークスペースとして登録できます。</li>
         <li><b>元に戻す:</b> <kbd>Ctrl</kbd>+<kbd>Z</kbd>。名前の変更・移動・コピーに加えて、ごみ箱に入れた削除も元の場所に戻せます。</li>
         <li><b>管理者として続ける:</b> Program Files やほかのユーザーのフォルダなどで、コピー・移動・削除・名前の変更・新しいフォルダの作成のアクセスが拒否されると、エクスプローラーと同じく「このフォルダーへのアクセス許可が必要です」と出ます。「管理者として続ける」を押すと、Windows の確認（ユーザー アカウント制御）のあとに、その操作を管理者の権限で行います。コピー・移動の途中で拒否された項目は、最後にまとめて聞き、確認は 1 回で残りをすべて続けます（同じ名前の確認や進み具合はいつもどおり。進み具合の横に「管理者」と出ます）。Shiori 自体は管理者になりません。<kbd>Ctrl</kbd>+<kbd>Z</kbd> で戻すときに拒否されたときも、同じように続けられます。</li>
         <li><b>日付を付けて複製:</b> 「画面設計書_20261114.xlsx」のように、今日の日付を付けてコピーします。</li>

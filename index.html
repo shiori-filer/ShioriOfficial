@@ -11,10 +11,72 @@
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:url" content="https://shiori-filer.github.io/ShioriOfficial/">
+<meta property="og:site_name" content="Shiori 栞">
+<meta property="og:locale" content="ja_JP">
 <meta name="twitter:card" content="summary_large_image">
 <meta property="og:type" content="website">
 <meta name="theme-color" content="#f4f6f2">
+<!-- Google Search Console: the site's owner (Bing Webmaster Tools imports it from there) -->
+<meta name="google-site-verification" content="nLt0y2pG1Fxv400-fP-BKNUhTNT07PeFm_LZQ2RaoIw">
+<link rel="canonical" href="https://shiori-filer.github.io/ShioriOfficial/">
 <link rel="icon" href="media/favicon.png">
+<link rel="apple-touch-icon" href="media/icon.png">
+<!-- what search engines read about the app (schema.org). The version and the download are
+     rewritten by release.yml to the published installer, as the download button is -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://shiori-filer.github.io/ShioriOfficial/#website",
+      "url": "https://shiori-filer.github.io/ShioriOfficial/",
+      "name": "Shiori 栞",
+      "alternateName": ["Shiori", "栞"],
+      "inLanguage": "ja",
+      "publisher": { "@id": "https://shiori-filer.github.io/ShioriOfficial/#org" }
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://shiori-filer.github.io/ShioriOfficial/#org",
+      "name": "Shiori",
+      "url": "https://shiori-filer.github.io/ShioriOfficial/",
+      "logo": "https://shiori-filer.github.io/ShioriOfficial/media/icon.png"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "@id": "https://shiori-filer.github.io/ShioriOfficial/#app",
+      "name": "Shiori 栞",
+      "alternateName": "Shiori",
+      "description": "Windows で開発・保守をする人のファイラー。ファイル名と中身の高速検索、数百 MB のログの絞り込み、Git のコミットやプッシュまで、ファイラーの中で。無料。",
+      "url": "https://shiori-filer.github.io/ShioriOfficial/",
+      "image": "https://shiori-filer.github.io/ShioriOfficial/media/og.png",
+      "screenshot": "https://shiori-filer.github.io/ShioriOfficial/media/hero.jpg",
+      "applicationCategory": "UtilitiesApplication",
+      "applicationSubCategory": "ファイラー（ファイルマネージャー）",
+      "operatingSystem": "Windows 10, Windows 11",
+      "softwareVersion": "0.3.5",
+      "downloadUrl": "https://github.com/shiori-filer/ShioriOfficial/releases/download/v0.3.5/Shiori_0.3.5_x64-setup.exe",
+      "softwareHelp": { "@type": "CreativeWork", "url": "https://shiori-filer.github.io/ShioriOfficial/guide/" },
+      "featureList": [
+        "ファイル名とファイルの中身の高速検索",
+        "数百 MB のログの絞り込み（ログビューアー）と Grep",
+        "Git のコミット・プッシュ・ブランチの流れ（路線図）",
+        "ワークスペースで案件ごとにフォルダを整理",
+        "タブと左右 2 画面",
+        "フォルダの容量の確認",
+        "開かずに中身をプレビュー（Excel・Word・PowerPoint・PDF・画像・ソースコード）",
+        "テンプレートからフォルダ構成ごと作成",
+        "ポータブル版（インストール不要）"
+      ],
+      "inLanguage": "ja",
+      "isAccessibleForFree": true,
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "JPY" },
+      "publisher": { "@id": "https://shiori-filer.github.io/ShioriOfficial/#org" }
+    }
+  ]
+}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Overpass:wght@600;800&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap">
@@ -405,10 +467,10 @@
       <h2>Shiori をはじめる</h2>
       <p>Windows 10 / 11（64 ビット）。インストーラーをダウンロードして実行するだけです。</p>
       <div class="dl-btns">
-        <a class="btn primary big" href="https://github.com/shiori-filer/ShioriOfficial/releases/download/v0.3.4/Shiori_0.3.4_x64-setup.exe" download>Windows 版をダウンロード</a>
-        <a class="btn big portable" href="https://github.com/shiori-filer/ShioriOfficial/releases/download/v0.3.4/Shiori_0.3.4_x64-portable.zip" download>ポータブル版（ZIP）</a>
+        <a class="btn primary big" href="https://github.com/shiori-filer/ShioriOfficial/releases/download/v0.3.5/Shiori_0.3.5_x64-setup.exe" download>Windows 版をダウンロード</a>
+        <a class="btn big portable" href="https://github.com/shiori-filer/ShioriOfficial/releases/download/v0.3.5/Shiori_0.3.5_x64-portable.zip" download>ポータブル版（ZIP）</a>
       </div>
-      <p class="note">バージョン 0.3.4（インストーラー、約 8.5 MB）。<a href="terms.html">利用規約</a>に同意のうえお使いください。</p>
+      <p class="note">バージョン 0.3.5（インストーラー、約 8.5 MB）。<a href="terms.html">利用規約</a>に同意のうえお使いください。</p>
       <p class="note portable">ポータブル版（ZIP、約 10.5 MB）はインストール不要です。展開して Shiori.exe を実行するだけで、設定などはそのフォルダに保存します。USB メモリでも持ち歩けます。</p>
       <p class="note">初めて実行すると「Windows によって PC が保護されました」と表示されることがあります。その場合は「詳細情報」→「実行」を選んでください。</p>
       <p class="note">ワークスペースの設定は、手で編集できるテキストファイル（TOML）に保存されます。Shiori が外部へデータを送ることはありません。</p>
